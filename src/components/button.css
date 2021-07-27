@@ -1,0 +1,11 @@
+button {
+    margin: 10px;
+    font-weight: bold;
+    /* background-color: var(--color6) !important; */
+}
+
+button:hover {
+    margin: 10px;
+    font-weight: bold;
+    background-color: tomato !important;
+}

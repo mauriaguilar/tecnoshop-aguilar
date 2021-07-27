@@ -1,0 +1,13 @@
+import './button.css';
+
+const Button = (props) => {
+    return (
+        <li className="nav-item" role="presentation">
+            <button className="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                {props.text}
+            </button>
+        </li>
+    );
+}
+
+export default Button;
