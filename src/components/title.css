@@ -1,8 +1,8 @@
-.title {
+#title {
     color: var(--color3);
     font-size: 5rem;
 }
-.subtitle {
+#subtitle {
     color: var(--color3);
     font-weight: bold;
 }
