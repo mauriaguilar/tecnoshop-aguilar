@@ -1,5 +1,5 @@
 import './ItemListContainer.css';
-import ItemCount from "./ItemCount"
+import ItemCount from "../ItemCount/ItemCount"
 
 const onAdd = (num_of_items) => {
     console.log("Adding " + num_of_items + " to cart.")
@@ -12,8 +12,6 @@ const ItemListContainer = ({ greeting }) => {
                 Hi <span className="greeting">{ greeting }</span>,
                 these are our innovative products!
                 <div className="card-group">
-                    <ItemCount stock="5" initial="1" onAdd="onAdd()"/>
-                    <ItemCount stock="5" initial="1" onAdd="onAdd()"/>
                     <ItemCount stock="5" initial="1" onAdd="onAdd()"/>
                 </div>
             </div>
