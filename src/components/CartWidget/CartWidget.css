@@ -1,7 +1,12 @@
+#icon {
+    color: var(--color1);
+}
+
 #title {
     color: var(--color3);
-    font-size: 5rem;
+    font-size: 4rem;
 }
+
 #subtitle {
     color: var(--color3);
     font-weight: bold;
