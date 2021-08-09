@@ -20,6 +20,7 @@ This project was tested with node v14.17.3 and npm 6.14.13.
 ```bash
 git clone https://github.com/mauriaguilar/tecnoshop-aguilar
 cd tecnoshop-aguilar
+git checkout Entrega4
 npm install
 ```
 
