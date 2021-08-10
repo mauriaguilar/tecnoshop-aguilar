@@ -1,0 +1,6 @@
+// structure
+
+// ItemListContainer
+// -ItemList
+// --Item detalle card
+// --ItemCount botones card
