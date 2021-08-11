@@ -29,3 +29,4 @@ npm install
 ```bash
 npm start
 ```
+![capture.png](capture.png)
