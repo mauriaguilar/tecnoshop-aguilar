@@ -1,8 +1,8 @@
-import Item from "../Item/Item"
 import React, {useState, useEffect} from 'react';
+import Item from "../Item/Item"
 import ItemCount from "../ItemCount/ItemCount"
 
-const ItemList = ({ greeting }) => {
+const ItemList = ({ items }) => {
 
     const [cart, setCart] = useState({});
     const [list, setList] = useState("...");
@@ -12,10 +12,10 @@ const ItemList = ({ greeting }) => {
 
         let this_cart = {...cart};
 
-        if (item.name in cart)
-            this_cart[item.name] += item.count;
+        if (item.title in cart)
+            this_cart[item.title] += item.count;
         else
-            this_cart[item.name] = item.count;
+            this_cart[item.title] = item.count;
 
         setCart(this_cart);
     }
@@ -26,15 +26,19 @@ const ItemList = ({ greeting }) => {
             string_list += ("* " + key + ": " + cart[key]);
 
         setList(string_list);
-    }, [cart])
+        console.log(items);
+    }, [cart, items])
 
     return (
         <>
-            <div className="card">
-                <Item name="Card title" description="This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer." image="http://lorempixel.com/400/200/technics/" />
-                <ItemCount name="Card title" stock={5} initial={1} onAdd={onAdd}/>
-            </div>
-
+            {
+                items.map(item => (
+                    <div key={item.id} className="card">
+                        <Item title={item.title} description={item.description} image={item.pictureUrl} />
+                        <ItemCount id={item.id} title={item.title} stock={5} initial={1} onAdd={onAdd}/>
+                    </div>
+                ))
+            }
             <div className="w-100">
                 Cart List:<br /> {list}
             </div>

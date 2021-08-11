@@ -1,11 +1,10 @@
-import './ItemCount.css';
 import React, {useState} from 'react';
+import './ItemCount.css';
 
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial, onAdd, id, title }) => {
 
     const [count, setCount] = useState(initial);
-    const name = "speaker";
 
     const delItem = () => {
         console.log("Deleting item...");
@@ -26,7 +25,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     const addToCart = () => {
         console.log("Adding item to cart...");
         if (stock > 0)
-            onAdd({"name": name, "count": count});
+            onAdd({"title": title, "count": count});
         else
             console.log("It is not possible to add an item to cart, because stock is 0.");
     }
@@ -51,7 +50,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
                                     type="button"
                                     id="button-addon2"
                                     onClick={addToCart}>
-                                        Agregar al carrito
+                                        Add to cart
                                 </button>
                         </div>
                     </div>
