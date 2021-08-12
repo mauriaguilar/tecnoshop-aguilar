@@ -3,7 +3,7 @@ import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList"
 
 // data simulation
-const items = [
+const items_data = [
     {
         id: 'd64cb826-416d-4b86-a528-d4fec79555fb',
         title: 'Speaker ASD-A1',
@@ -28,13 +28,18 @@ const items = [
 ];
 
 // api call simulation
-const getItem = (id = null) => {
+const getItem = (items_id = []) => {
     console.log('waiting for response...');
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const item = items.find(user => user.id === id);
-            console.log(item);
-            if (item != null) resolve(item);
+            const items_res = items_data.map((item_data, index, array) => {
+                if (items_id.find(item_id => item_id === item_data.id))
+                    return item_data;
+                    console.log(item_data)
+                return null;
+            }).filter(item => item !== null);;
+            console.log(items_res);
+            if (items_res != null) resolve(items_res);
             reject({
                 status: 404
             });
@@ -42,12 +47,12 @@ const getItem = (id = null) => {
     });
 };
 
-const getItems = (id) => {
+const getItems = (items_id) => {
     return new Promise(async (resolve, reject) => {
-        const item = await getItem(id).catch(
+        const items = await getItem(items_id).catch(
             err => reject(err)
         );
-        (item) ? resolve(item) : reject('not items');
+        (items) ? resolve(items) : reject('not items');
     });
 }
 
@@ -59,15 +64,15 @@ const ItemListContainer = ({ greeting }) => {
 
     useEffect(() => {async function fetchData() {
         console.log("Searching items");
+        const items_id = [
+                    'd64cb826-416d-4b86-a528-d4fec79555fb',
+                    'baead852-0a20-4a78-ace9-61f63d3f6672',
+                    'fb231439-9ae0-4d67-bd9b-e8bfa95cc35a'
+        ]
+        const items = await getItems(items_id);
+        setItemList(items);
 
-        const item1 = await getItems('d64cb826-416d-4b86-a528-d4fec79555fb');
-        setItemList([item1]);
-        const item2 = await getItems('baead852-0a20-4a78-ace9-61f63d3f6672');
-        setItemList([item1, item2]);
-        const item3 = await getItems('fb231439-9ae0-4d67-bd9b-e8bfa95cc35a');
-        setItemList([item1, item2, item3]);
-
-        console.log([item1, item2, item3]);
+        console.log(items);
       }
       fetchData();
     },[])
