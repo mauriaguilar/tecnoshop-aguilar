@@ -57,7 +57,7 @@ const ItemListContainer = ({ greeting }) => {
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     }]);
 
-    useEffect(async () => {
+    useEffect(() => {async function fetchData() {
         console.log("Searching items");
 
         const item1 = await getItems('d64cb826-416d-4b86-a528-d4fec79555fb');
@@ -68,6 +68,8 @@ const ItemListContainer = ({ greeting }) => {
         setItemList([item1, item2, item3]);
 
         console.log([item1, item2, item3]);
+      }
+      fetchData();
     },[])
 
     return (
