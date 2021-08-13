@@ -28,7 +28,7 @@ const items_data = [
 ];
 
 // api call simulation
-const getItem = (items_id = []) => {
+const getFromApi = (items_id = []) => {
     console.log('waiting for response...');
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -49,7 +49,7 @@ const getItem = (items_id = []) => {
 
 const getItems = (items_id) => {
     return new Promise(async (resolve, reject) => {
-        const items = await getItem(items_id).catch(
+        const items = await getFromApi(items_id).catch(
             err => reject(err)
         );
         (items) ? resolve(items) : reject('not items');
@@ -71,12 +71,29 @@ const ItemListContainer = ({ greeting }) => {
         ]
         const items = await getItems(items_id);
         setItemList(items);
-
         console.log(items);
       }
       fetchData();
     },[])
 
+    const [cart, setCart] = useState([]);
+    const onAdd = (item) => {
+        console.log("Adding item to cart.");
+        let this_cart = [...cart];
+
+        for (let i=0; i<this_cart.length; i++){
+            if (this_cart[i].title === item.title) {
+                this_cart[i].count += item.count;
+                setCart(this_cart);
+                console.log(this_cart);
+                return;
+            }
+        }
+        this_cart.push(item);
+        setCart(this_cart);
+        console.log(this_cart);
+    }
+ 
     return (
         <div className="row m-5 border border-dark">
             
@@ -84,8 +101,16 @@ const ItemListContainer = ({ greeting }) => {
                 Hi <span className="greeting">{ greeting }</span>,
                 these are our innovative products!
                 <div className="card-group">
-                    <ItemList items={itemList}/>
+                    <ItemList items={itemList} onAdd={onAdd}/>
                 </div>
+            </div>
+
+            <div className="w-100">
+                <b>Cart List:</b><br /> {
+                    cart.map(item => (
+                        <div key={item.title}>* {item.title}: {item.count}</div>
+                    ))
+                }
             </div>
 
         </div>
