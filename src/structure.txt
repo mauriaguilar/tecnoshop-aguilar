@@ -4,3 +4,8 @@
 // -ItemList
 // --Item detalle card
 // --ItemCount botones card
+
+// ItemDetailContainer
+// -ItemDetail
+// --Item detalle ampliado
+// --ItemCount botones card derecha

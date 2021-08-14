@@ -29,9 +29,10 @@ const getFromApi = (items_id = []) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const items_res = items_data.map((item_data, index, array) => {
-                if (items_id.find(item_id => item_id === item_data.id))
-                    return item_data;
+                if (items_id.find(item_id => item_id === item_data.id)){
                     console.log(item_data)
+                    return item_data;
+                }
                 return null;
             }).filter(item => item !== null);;
             console.log(items_res);
