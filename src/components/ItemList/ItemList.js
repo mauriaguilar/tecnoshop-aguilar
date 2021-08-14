@@ -8,7 +8,7 @@ const ItemList = ({ items, onAdd }) => {
         <>
             {
                 items.map(item => (
-                    <div key={item.id} className="card me-3 shadow">
+                    <div key={item.id} className="col card me-3 shadow">
                         <Item title={item.title} description={item.description} image={item.pictureUrl} />
                         <ItemCount id={item.id} title={item.title} stock={5} initial={1} onAdd={onAdd}/>
                     </div>

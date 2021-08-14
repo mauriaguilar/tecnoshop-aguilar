@@ -8,7 +8,7 @@ function App() {
     <div className="App container-fluid">
         <NavBar />
         <ItemListContainer greeting="Tecno People" />
-        <ItemDetailContainer greeting="Tecno People" />
+        <ItemDetailContainer category="Speakers" />
     </div>
   );
 }
