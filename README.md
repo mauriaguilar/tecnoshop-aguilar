@@ -29,4 +29,4 @@ npm install
 ```bash
 npm start
 ```
-![capture.png](capture.png)
+![use_example.gif](use_example.gif)
