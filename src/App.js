@@ -8,8 +8,8 @@ import NotFound from './pages/error404';
 function App() {
   return (
     <div className="App container-fluid">
-        <NavBar />
         <BrowserRouter>
+          <NavBar />
           <Switch>
             <Route exact path="/">
               <div>Route: /</div>
