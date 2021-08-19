@@ -31,7 +31,7 @@ const items_data = [
         title: 'Smartwatch ZXC-Z2',
         description: 'Smartwatch 2x Universal 1000W Car Speaker Audio 4Ω Super',
         price: 9.49,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/3/',
+        pictureUrl: 'http://lorempixel.com/400/200/technics/4/',
         category: "Smartwatches"
     },
     {
@@ -39,7 +39,7 @@ const items_data = [
         title: 'Smartwatch KLJ-U3',
         description: 'Smartwatch Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/4/',
+        pictureUrl: 'http://lorempixel.com/400/200/technics/3/',
         category: "Smartwatches"
     },
     {

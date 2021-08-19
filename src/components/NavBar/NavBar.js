@@ -3,6 +3,14 @@ import CartWidget from "../CartWidget/CartWidget"
 import { Link } from 'react-router-dom';
 
 const AccountScreen = () => {
+    const categories = [
+        "Smartphones",
+        "Smartwatches",
+        "Batteries",
+        "Speakers",
+        "Accessories",
+    ]
+
     return (
         <div className="row">
             <div className="col">
@@ -26,11 +34,11 @@ const AccountScreen = () => {
 
                 <div className="row">
                     <ul className="col d-flex justify-content-center nav nav-pills mb-3 navbar-dark bg-dark" id="pills-tab" role="tablist">
-                        <Button text="Smartphones"/>
-                        <Button text="Smartwatches"/>
-                        <Button text="Batteries"/>
-                        <Button text="Speakers"/>
-                        <Button text="Accessories"/>
+                        {
+                            categories.map(cat => {
+                                return <Button key={cat} text={cat}/>
+                            })
+                        }
                     </ul>
                 </div>
 
