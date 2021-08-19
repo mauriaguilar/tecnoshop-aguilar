@@ -20,7 +20,7 @@ const ItemDetailContainer = ({ category }) => {
         console.log(items[0]);
       }
       fetchData();
-    },[])
+    },[id])
 
     const [cart, setCart] = useState([]);
     const onAdd = (item) => {

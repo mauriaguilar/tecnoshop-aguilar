@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
-import getItems from "../../apiMock";
+import {getItems, getItemsByCategory} from "../../apiMock";
 import { useParams } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting }) => {
@@ -13,24 +13,9 @@ const ItemListContainer = ({ greeting }) => {
 
     useEffect(() => {async function fetchData() {
         console.log("Searching items");
-        let items_id = [
-            'd64cb826-416d-4b86-a528-d4fec79555fb',
-            'baead852-0a20-4a78-ace9-61f63d3f6672',
-            '9cec2487-e544-40c6-b112-81d47edd7b10',
-            'fb231439-9ae0-4d67-bd9b-e8bfa95cc35a',
-            'ebb76000-c738-476c-b3fd-34704b567c74'
-        ];
-        if (id === "Smartphones")
-            items_id = ['d64cb826-416d-4b86-a528-d4fec79555fb'];
-        else if (id === "Smartwatches")
-            items_id = ['baead852-0a20-4a78-ace9-61f63d3f6672'];
-        else if (id === "Batteries")
-            items_id = ['9cec2487-e544-40c6-b112-81d47edd7b10'];
-        else if (id === "Speakers")
-            items_id = ['fb231439-9ae0-4d67-bd9b-e8bfa95cc35a'];
-        else if (id === "Accessories")
-            items_id = ['ebb76000-c738-476c-b3fd-34704b567c74'];
-        const items = await getItems(items_id);
+        // let items_id = ["*"];
+        // const items = await getItems(items_id);
+        const items = await getItemsByCategory(id);
         setItemList(items);
         console.log(items);
       }

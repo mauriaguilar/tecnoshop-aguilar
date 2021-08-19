@@ -20,7 +20,7 @@ const ItemDetail = ({ item, onAdd }) => {
                         <h5 className="card-title">{item.title}</h5>
                         <p className="card-text fs-5">{item.description}</p>
                         <h3>$ {item.price}</h3>
-                        {/* <ItemCount id={item?.id} title={item?.title} stock={5} initial={1} onAdd={onAdd}/> */}
+                        <ItemCount id={item?.id} title={item?.title} stock={5} initial={1} onAdd={onAdd}/>
                     </div>
                 </div>
 
