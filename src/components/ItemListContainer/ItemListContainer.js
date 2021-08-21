@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
-import {getItems, getItemsByCategory} from "../../apiMock";
+import {getItemsByCategory} from "../../apiMock";
 import { useParams } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting }) => {

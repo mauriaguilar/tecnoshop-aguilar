@@ -37,9 +37,15 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
 
                     {/* Stock controls component */}
                     <div className="input-group mb-3">
-                        <button className="btn btn-outline-secondary m-0" type="button" id="button-addon1" onClick={delItem}>-</button>
+                        <button className="btn btn-outline-secondary m-0" type="button"
+                         disabled={count===0} onClick={delItem}>
+                            -
+                        </button>
                         <input type="text" className="form-control text-center" placeholder={count} aria-label="amount" aria-describedby="button-addon1" />
-                        <button className="btn btn-outline-secondary m-0" type="button" id="button-addon2" onClick={addItem}>+</button>
+                        <button className="btn btn-outline-secondary m-0" type="button"
+                          disabled={count===stock} onClick={addItem}>
+                            +
+                        </button>
                     </div>
 
                     {/* Add-to-cart button component */}
