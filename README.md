@@ -1,5 +1,12 @@
 # TecnoShop Aguilar
 
+- [TecnoShop Aguilar](#tecnoshop-aguilar)
+  - [Prerequisites](#prerequisites)
+    - [Node](#node)
+  - [Get the project](#get-the-project)
+  - [Start app](#start-app)
+  - [Structure of code](#structure-of-code)
+
 This repo contains a simple tecno shop based on ReactJs.
 ## Prerequisites
 
@@ -20,7 +27,7 @@ This project was tested with node v14.17.3 and npm 6.14.13.
 ```bash
 git clone https://github.com/mauriaguilar/tecnoshop-aguilar
 cd tecnoshop-aguilar
-git checkout Entrega7-FinalProject-v1
+git checkout Entrega8-Cart
 npm install
 ```
 
@@ -30,3 +37,20 @@ npm install
 npm start
 ```
 ![use_example.gif](use_example.gif)
+
+## Structure of code
+
+* App
+  * Paths: **/** and **/category/:id**
+    * ItemListContainer
+      * ItemList
+        * Item
+        * ItemCount
+  * Path: **/item/:id**
+    * ItemDetailContainer
+      * ItemDetail
+        * ItemCount
+  * Path: **/cart**
+    * empty-component
+  * Path: **/\***
+    * NotFound
