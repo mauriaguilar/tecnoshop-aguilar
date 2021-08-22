@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
-import {getItemsByCategory} from "../../apiMock";
+import {getItemsByCategory, getItems} from "../../apiMock";
 import { useParams } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting }) => {
@@ -12,12 +12,10 @@ const ItemListContainer = ({ greeting }) => {
     const { id } = useParams();
 
     useEffect(() => {async function fetchData() {
-        console.log("Searching items");
-        // let items_id = ["*"];
-        // const items = await getItems(items_id);
-        const items = await getItemsByCategory(id);
-        setItemList(items);
+        const all_items = ["*"];
+        const items = id ? await getItemsByCategory(id) : await getItems(all_items);
         console.log(items);
+        setItemList(items);
       }
       fetchData();
     },[id])

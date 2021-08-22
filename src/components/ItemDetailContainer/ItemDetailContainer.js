@@ -15,9 +15,10 @@ const ItemDetailContainer = ({ category }) => {
         console.log("Searching items");
         const id_of_item = id ? id : 'fb231439-9ae0-4d67-bd9b-e8bfa95cc35a';
         const items_id = [id_of_item]
+        console.log(items_id)
         const items = await getItems(items_id);
+        console.log(items);
         setItemDetail(items[0]);
-        console.log(items[0]);
       }
       fetchData();
     },[id])

@@ -10,7 +10,7 @@ const items_data = [
     },
     {
         id: '7a4f7d1e-b3cc-4190-9be8-e75434b16df1',
-        title: 'Smartphone KLJ-U3',
+        title: 'Smartphone DPM-P3',
         description: 'Smartphone Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/1/',
@@ -18,7 +18,7 @@ const items_data = [
     },
     {
         id: '9093ad6d-8717-4527-994a-76e436ddd00f',
-        title: 'Smartphone KLJ-U3',
+        title: 'Smartphone MKO-S1',
         description: 'Smartphone Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
         pictureUrl: 'https://lorempixel.com/400/200/technics/2/',
@@ -38,7 +38,7 @@ const items_data = [
     },
     {
         id: '93ab86e7-c360-4add-a783-681aee96e632',
-        title: 'Smartwatch KLJ-U3',
+        title: 'Smartwatch RTE-X5',
         description: 'Smartwatch Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
         initial: 1,
@@ -60,7 +60,7 @@ const items_data = [
 
     {
         id: 'ebb76000-c738-476c-b3fd-34704b567c74',
-        title: 'Accesory KLJ-U3',
+        title: 'Accesory TUO-Y7',
         description: 'Accesory Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
         initial: 1,
@@ -70,7 +70,7 @@ const items_data = [
     },
     {
         id: 'c7aa5a89-64d9-4127-9345-cd9925a900ec',
-        title: 'Accesory KLJ-U3',
+        title: 'Accesory NOY-K8',
         description: 'Accesory Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
         initial: 1,
@@ -80,7 +80,7 @@ const items_data = [
     },
     {
         id: '41af10cc-7f1b-4af5-b462-7a3504d78b61',
-        title: 'Accesory KLJ-U3',
+        title: 'Accesory FRW-N5',
         description: 'Accesory Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
         initial: 1,
@@ -102,7 +102,7 @@ const items_data = [
     },
     {
         id: '71c3217e-95fc-4ecd-92a9-72ef235b915c',
-        title: 'Speaker QWE-Q3',
+        title: 'Speaker VYW-E3',
         description: 'Speaker Bluetooth Amplified Mini Portable Speaker Wireless WiFi',
         price: 14.09,
         initial: 1,
@@ -112,12 +112,12 @@ const items_data = [
     },
     {
         id: '04a9d165-cdd9-4356-8b0d-25b2715412ed',
-        title: 'Speaker QWE-Q3',
+        title: 'Speaker BTR-I9',
         description: 'Speaker Bluetooth Amplified Mini Portable Speaker Wireless WiFi',
         price: 14.09,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/nightlife/1/',
+        pictureUrl: 'http://lorempixel.com/400/200/nightlife/2/',
         category: "Speakers"
     },
 
@@ -185,7 +185,7 @@ const getFromApi = (items_id = []) => {
     });
 };
 
-const getItems = (items_id) => {
+export const getItems = (items_id) => {
     return new Promise(async (resolve, reject) => {
         const items = await getFromApi(items_id).catch(
             err => reject(err)
@@ -204,6 +204,5 @@ export const getItemsByCategory = (category) => {
         (items) ? resolve(items) : reject('not items');
     });
 }
-
 
 export default getItems;
