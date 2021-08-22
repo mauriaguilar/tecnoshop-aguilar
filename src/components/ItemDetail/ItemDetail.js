@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import ItemCount from "../ItemCount/ItemCount"
 import { Link } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ const ItemDetail = ({ item }) => {
             <div className="row me-3 shadow bg-white ms-1 mb-1">
             
                 <div className="col-6 ps-0">
-                    <img src={item.pictureUrl} className="card-img-top" alt="..." />
+                    <img src={item.pictureUrl} className="card-img-top h-100" alt="..." />
                 </div>
 
                 <div className="col-4">
