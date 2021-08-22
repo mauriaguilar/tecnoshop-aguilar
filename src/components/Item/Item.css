@@ -6,3 +6,11 @@
     max-height: 12rem;
     overflow: hidden;
 }
+.item-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.item-link:hover {
+    color: var(--color6);;
+}
