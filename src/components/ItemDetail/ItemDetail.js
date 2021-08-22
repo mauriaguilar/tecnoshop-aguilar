@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import ItemCount from "../ItemCount/ItemCount"
 
 const ItemDetail = ({ item }) => {
@@ -13,8 +13,9 @@ const ItemDetail = ({ item }) => {
     const hideTotal = () => {
         setIsVisible(false);
     }
-    useEffect(() => {
-    })
+    const terminarCompra = () => {
+        console.log("Terminar compra");
+    }
 
     return (
         <>
@@ -35,7 +36,10 @@ const ItemDetail = ({ item }) => {
                         {isVisible &&
                             <div>{count} <br /> 
                                 <button className="btn btn-outline-secondary m-0" type="button" onClick={hideTotal}>
-                                    Agregar mas
+                                    Cancelar
+                                </button>
+                                <button className="btn btn-outline-secondary m-0" type="button" onClick={terminarCompra}>
+                                    Terminar mi compra
                                 </button>
                             </div>
                         }
