@@ -27,7 +27,6 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
     }
 
     const addToCart = () => {
-        console.log("Adding item to cart...");
         if (stock > 0)
             onAdd({"title": title, "count": count});
         else

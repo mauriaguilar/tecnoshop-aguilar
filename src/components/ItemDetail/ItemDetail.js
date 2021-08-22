@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import ItemCount from "../ItemCount/ItemCount"
+import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ item }) => {
 
     const [count, setCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const onAdd = (item) => {
+        console.log("Adding item to cart...");
         setCount(item.count);
         item.initial = count;
         setIsVisible(true);
@@ -13,7 +15,7 @@ const ItemDetail = ({ item }) => {
     const hideTotal = () => {
         setIsVisible(false);
     }
-    const terminarCompra = () => {
+    const finishPurchase = () => {
         console.log("Terminar compra");
     }
 
@@ -34,13 +36,15 @@ const ItemDetail = ({ item }) => {
                             <ItemCount id={item?.id} title={item?.title} stock={item.stock} initial={count} onAdd={onAdd}/>
                         }
                         {isVisible &&
-                            <div>{count} <br /> 
-                                <button className="btn btn-outline-secondary m-0" type="button" onClick={hideTotal}>
-                                    Cancelar
+                            <div>{count} units.<br /> 
+                                <button className="btn btn-outline-secondary m-0 me-3" type="button" onClick={hideTotal}>
+                                    Cancel
                                 </button>
-                                <button className="btn btn-outline-secondary m-0" type="button" onClick={terminarCompra}>
-                                    Terminar mi compra
-                                </button>
+                                <Link to="/cart">
+                                    <button className="btn btn-outline-secondary m-0" type="button" onClick={finishPurchase}>
+                                        Finish Purchase
+                                    </button>
+                                </Link>
                             </div>
                         }
                     </div>

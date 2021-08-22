@@ -1,8 +1,11 @@
-import React, {} from 'react';
+import React, {useState} from 'react';
 import Item from "../Item/Item"
 import ItemCount from "../ItemCount/ItemCount"
 
-const ItemList = ({ items, onAdd }) => {
+const ItemList = ({ items }) => {
+    const onAdd = (item) => {
+        console.log("Adding item to cart...");
+    }
 
     return (
         <>

@@ -22,43 +22,18 @@ const ItemListContainer = ({ greeting }) => {
       fetchData();
     },[id])
 
-    const [cart, setCart] = useState([]);
-    const onAdd = (item) => {
-        console.log("Adding item to cart.");
-        let this_cart = [...cart];
-
-        for (let i=0; i<this_cart.length; i++){
-            if (this_cart[i].title === item.title) {
-                this_cart[i].count += item.count;
-                setCart(this_cart);
-                console.log(this_cart);
-                return;
-            }
-        }
-        if (item.count > 0)
-            this_cart.push(item);
-        setCart(this_cart);
-        console.log(this_cart);
-    }
- 
     return (
     <>
-        Category: {id}<br/>
+        <div className="row ms-5">
+        <h2>{id}</h2>
+        </div>
         <div className="row m-5 border border-dark">
             <div id="itemListContainer" className="col fs-3 ">
                 Hi <span className="greeting">{ greeting }</span>,
                 these are our innovative products!
                 <div className="card-group">
-                    <ItemList items={itemList} onAdd={onAdd}/>
+                    <ItemList items={itemList}/>
                 </div>
-            </div>
-
-            <div className="w-100">
-                <b>Cart List:</b><br /> {
-                    cart.map(item => (
-                        <div key={item.title}>* {item.title}: {item.count}</div>
-                    ))
-                }
             </div>
 
         </div>

@@ -12,16 +12,16 @@ function App() {
           <NavBar />
           <Switch>
             <Route exact path="/">
-              <div>Route: /</div>
               <ItemListContainer greeting="Tecno People" />
             </Route>
             <Route exact path="/category/:id">
-              <div>Route: /Category ID</div>
               <ItemListContainer greeting="Tecno People" />
             </Route>
             <Route exact path="/item/:id">
-              <div>Route: /Item ID</div>
               <ItemDetailContainer category="Speakers" />
+            </Route>
+            <Route exact path="/cart">
+              <h2>Purchase details:</h2>
             </Route>
             <Route path="*" component={NotFound} />
           </Switch>
