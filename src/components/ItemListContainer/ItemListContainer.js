@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 const ItemListContainer = ({ greeting }) => {
     const [itemList, setItemList] = useState([{
         id: 0, title: "loading...", description: "loading...",
+        initial: 0, stock: 0,
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     }]);
     const { id } = useParams();
