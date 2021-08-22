@@ -31,6 +31,8 @@ const items_data = [
         title: 'Smartwatch ZXC-Z2',
         description: 'Smartwatch 2x Universal 1000W Car Speaker Audio 4Ω Super',
         price: 9.49,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/4/',
         category: "Smartwatches"
     },
@@ -39,6 +41,8 @@ const items_data = [
         title: 'Smartwatch KLJ-U3',
         description: 'Smartwatch Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/3/',
         category: "Smartwatches"
     },
@@ -47,6 +51,8 @@ const items_data = [
         title: 'Smartwatch KLJ-U3',
         description: 'Smartwatch Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/9/',
         category: "Smartwatches"
     },
@@ -57,6 +63,8 @@ const items_data = [
         title: 'Accesory KLJ-U3',
         description: 'Accesory Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/7/',
         category: "Accessories"
     },
@@ -65,6 +73,8 @@ const items_data = [
         title: 'Accesory KLJ-U3',
         description: 'Accesory Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/8/',
         category: "Accessories"
     },
@@ -73,6 +83,8 @@ const items_data = [
         title: 'Accesory KLJ-U3',
         description: 'Accesory Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/10/',
         category: "Accessories"
     },
@@ -83,6 +95,8 @@ const items_data = [
         title: 'Speaker QWE-Q3',
         description: 'Speaker Bluetooth Amplified Mini Portable Speaker Wireless WiFi',
         price: 14.09,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/5/',
         category: "Speakers"
     },
@@ -91,6 +105,8 @@ const items_data = [
         title: 'Speaker QWE-Q3',
         description: 'Speaker Bluetooth Amplified Mini Portable Speaker Wireless WiFi',
         price: 14.09,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/nightlife/0/',
         category: "Speakers"
     },
@@ -99,6 +115,8 @@ const items_data = [
         title: 'Speaker QWE-Q3',
         description: 'Speaker Bluetooth Amplified Mini Portable Speaker Wireless WiFi',
         price: 14.09,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/nightlife/1/',
         category: "Speakers"
     },
@@ -109,6 +127,8 @@ const items_data = [
         title: 'Battery FER-T3',
         description: 'Battery Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 12.9,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/6/',
         category: "Batteries"
     },
@@ -117,6 +137,8 @@ const items_data = [
         title: 'Battery BFS-T3',
         description: 'Battery Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 12.9,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/nightlife/3/',
         category: "Batteries"
     },
@@ -125,6 +147,8 @@ const items_data = [
         title: 'Battery GWS-T3',
         description: 'Battery Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 12.9,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/nightlife/4/',
         category: "Batteries"
     }

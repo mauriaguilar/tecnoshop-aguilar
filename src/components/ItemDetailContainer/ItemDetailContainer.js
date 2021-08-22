@@ -47,7 +47,7 @@ const ItemDetailContainer = ({ category }) => {
             <div id="itemListContainer" className="col fs-3 ">
                 Item Detail of Category <span className="greeting">{ category }</span>
                 <div className="card-group">
-                    <ItemDetail item={itemDetail} onAdd={onAdd}/>
+                    <ItemDetail item={itemDetail}/>
                 </div>
             </div>
 

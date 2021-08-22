@@ -1,11 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ItemCount from "../ItemCount/ItemCount"
 
-const ItemDetail = ({ item, onAdd }) => {
+const ItemDetail = ({ item }) => {
 
+    const [count, setCount] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const onAdd = (item) => {
+        setCount(item.count);
+        item.initial = count;
+        setIsVisible(true);
+    }
+    const hideTotal = () => {
+        setIsVisible(false);
+    }
     useEffect(() => {
-        console.log(item)
-    },[item])
+    })
 
     return (
         <>
@@ -20,9 +29,19 @@ const ItemDetail = ({ item, onAdd }) => {
                         <h5 className="card-title">{item.title}</h5>
                         <p className="card-text fs-5">{item.description}</p>
                         <h3>$ {item.price}</h3>
-                        <ItemCount id={item?.id} title={item?.title} stock={5} initial={1} onAdd={onAdd}/>
+                        {!isVisible &&
+                            <ItemCount id={item?.id} title={item?.title} stock={item.stock} initial={count} onAdd={onAdd}/>
+                        }
+                        {isVisible &&
+                            <div>{count} <br /> 
+                                <button className="btn btn-outline-secondary m-0" type="button" onClick={hideTotal}>
+                                    Agregar mas
+                                </button>
+                            </div>
+                        }
                     </div>
                 </div>
+
 
             </div>
         </>
