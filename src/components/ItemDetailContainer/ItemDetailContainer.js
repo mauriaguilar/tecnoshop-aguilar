@@ -28,7 +28,7 @@ const ItemDetailContainer = ({ category }) => {
         <div className="row m-5 border border-dark">
             
             <div id="itemListContainer" className="col fs-3 ">
-                Item Detail of Category <span className="greeting">{ category }</span>
+                Item Detail of<span className="greeting"> {itemDetail.title} </span>
                 <div className="card-group">
                     <ItemDetail item={itemDetail}/>
                 </div>
