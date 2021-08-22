@@ -5,6 +5,8 @@ const items_data = [
         title: 'Smartphone ASD-A1',
         description: 'Smartphone Charge 4 Portable Waterproof Wireless Bluetooth Original Brand New',
         price: 52.45,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/0/',
         category: "Smartphones"
     },
@@ -13,6 +15,8 @@ const items_data = [
         title: 'Smartphone DPM-P3',
         description: 'Smartphone Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'http://lorempixel.com/400/200/technics/1/',
         category: "Smartphones"
     },
@@ -21,6 +25,8 @@ const items_data = [
         title: 'Smartphone MKO-S1',
         description: 'Smartphone Bluetooth Amplified Mini Speaker Portable Speaker Wireless WiFi',
         price: 34.5,
+        initial: 1,
+        stock: 5,
         pictureUrl: 'https://lorempixel.com/400/200/technics/2/',
         category: "Smartphones"
     },
