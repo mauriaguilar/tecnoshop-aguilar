@@ -6,10 +6,10 @@ const ItemDetail = ({ item }) => {
 
     const [count, setCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
-    const onAdd = (item) => {
+    const onAdd = (quantityToAdd) => {
         console.log("Adding item to cart...");
-        setCount(item.count);
-        item.initial = count;
+        setCount(quantityToAdd);
+        item.initial = quantityToAdd;
         setIsVisible(true);
     }
     const hideTotal = () => {
@@ -42,7 +42,7 @@ const ItemDetail = ({ item }) => {
                                 </button>
                                 <Link to="/cart">
                                     <button className="btn btn-outline-secondary m-0" type="button" onClick={finishPurchase}>
-                                        Finish Purchase
+                                        Finish my purchase
                                     </button>
                                 </Link>
                             </div>
