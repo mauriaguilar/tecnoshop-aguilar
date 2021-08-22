@@ -2,7 +2,6 @@
 
 - [TecnoShop Aguilar](#tecnoshop-aguilar)
   - [Prerequisites](#prerequisites)
-    - [Node](#node)
   - [Get the project](#get-the-project)
   - [Start app](#start-app)
   - [Structure of code](#structure-of-code)
@@ -10,7 +9,7 @@
 This repo contains a simple tecno shop based on ReactJs.
 ## Prerequisites
 
-### Node
+**Node**  
 Install node (Ubuntu):
 ```bash
 sudo snap install node --classic
