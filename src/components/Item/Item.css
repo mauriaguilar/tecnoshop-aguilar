@@ -1,3 +1,8 @@
 .card {
     max-width: 18rem;
 }
+.card-body {
+    min-height: 12rem;
+    max-height: 12rem;
+    overflow: hidden;
+}
