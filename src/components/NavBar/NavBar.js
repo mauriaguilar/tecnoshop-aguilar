@@ -1,6 +1,7 @@
 import Button from "../Button/Button"
 import CartWidget from "../CartWidget/CartWidget"
 import { Link } from 'react-router-dom';
+import './NavBar.css';
 
 const AccountScreen = () => {
     const categories = [
@@ -15,17 +16,15 @@ const AccountScreen = () => {
         <div className="row">
             <div className="col">
 
-                <Link to="/">
-                <div className="row">
+                <Link to="/" className="row title-link">
                     <div id="title" className="col d-flex justify-content-center">
                             <span className="d-flex align-items-center">
                                 <CartWidget />
                             </span>
-                            <span className="appname">
+                            <span>
                                 TecnoShop Aguilar
                             </span>
                     </div>
-                </div>
                 </Link>
 
                 <div className="row">
