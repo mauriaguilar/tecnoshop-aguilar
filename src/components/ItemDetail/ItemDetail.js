@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import ItemCount from "../ItemCount/ItemCount"
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../contexts/CartContext';
 
 const ItemDetail = ({ item }) => {
 
     const [count, setCount] = useState(0);
+    useEffect(() => {
+        setCount(item.initial);
+    }, [item]);
+
     const [isVisible, setIsVisible] = useState(false);
     const onAdd = (quantityToAdd) => {
         console.log("Adding item to cart...");
@@ -15,14 +20,17 @@ const ItemDetail = ({ item }) => {
     const hideTotal = () => {
         setIsVisible(false);
     }
+    const cart = useContext(CartContext);
     const finishPurchase = () => {
-        console.log("Terminar compra");
+        console.log("Finish purchase");
+        cart.addItem(item.id, count);
     }
 
     return (
         <>
+            cart: {JSON.stringify(cart?.cart)}-
             <div className="row me-3 shadow bg-white ms-1 mb-1">
-            
+
                 <div className="col-6 ps-0">
                     <img src={item.pictureUrl} className="card-img-top h-100" alt="..." />
                 </div>
@@ -36,7 +44,7 @@ const ItemDetail = ({ item }) => {
                             <ItemCount id={item?.id} title={item?.title} stock={item.stock} initial={count} onAdd={onAdd}/>
                         }
                         {isVisible &&
-                            <div>{count} units.<br /> 
+                            <div>{count} units.<br />
                                 <button className="btn btn-outline-secondary m-0 me-3" type="button" onClick={hideTotal}>
                                     Cancel
                                 </button>
