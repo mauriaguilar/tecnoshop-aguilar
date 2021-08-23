@@ -12,7 +12,7 @@ const Cart = () => {
     return (
         <>
             <h2>Purchase details:</h2>
-            <h3>{JSON.stringify(cartContext?.cart)}</h3>
+            <h4>{JSON.stringify(cartContext?.cart)}</h4>
         </>
     )
 }

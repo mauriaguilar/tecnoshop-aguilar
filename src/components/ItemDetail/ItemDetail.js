@@ -28,7 +28,6 @@ const ItemDetail = ({ item }) => {
 
     return (
         <>
-            cart: {JSON.stringify(cart?.cart)}-
             <div className="row me-3 shadow bg-white ms-1 mb-1">
 
                 <div className="col-6 ps-0">
