@@ -3,21 +3,22 @@ import React, { useState } from 'react';
 
 export const CartContext = React.createContext();
 
-const defaultValue = {};
+const defaultValue = [];
 
 
 
 export default function CartProvider({ children }) {
-    const [cart, setCart] = useState(defaultValue);
+    const [items, setItems] = useState(defaultValue);
 
 
-    const addItem = (item_id, quantity) => {
-        console.log("Adding " + quantity + " items of " + item_id + ".");
-        cart[item_id] = quantity;
-        setCart({...cart});
-        console.log("---cart-----");
-        console.log(cart);
-        console.log("---/cart-----");
+    const addItem = (item, quantity) => {
+        console.log("Adding " + quantity + " items of " + item.id + ".");
+        if (isInCart(item.id)) {
+            let new_items = removeItem(item.id);
+            setItems([...new_items, {item, quantity}]);
+        } else {
+            setItems([...items, {item, quantity}]);
+        }
 
         // Testing functions
         // removeItem(item_id);
@@ -27,34 +28,26 @@ export default function CartProvider({ children }) {
     }
 
     const removeItem = (item_id) => {
-        console.log("Removing item id.");
-        if (isInCart(item_id)){
-            delete cart[item_id];
-            setCart({...cart});
-            console.log("Item " + item_id + " was removed.");
-        } else {
-            console.log("It is not possible to remove the item because it doesn't exist.")
-        }
+        let new_items = items.filter(function(element){
+            return element.item.id !== item_id;
+        });
+        console.log("Item " + item_id + " was removed.");
+        return new_items;
     }
 
     const clear = () => {
-        console.log("Removing all items.");
-        setCart({});
+        setItems({});
+        console.log("All items removed.");
     }
 
     const isInCart = (item_id) => {
-        console.log("Is in cart: " + ((item_id in cart) ? true : false));
-        return (item_id in cart) ? true : false;
+        let isInCart = (items.find(elem => elem.item.id === item_id) !== undefined) ? true : false;
+        console.log("Is in cart: " + isInCart + ".");
+        return isInCart;
     }
 
     return (
-        <CartContext.Provider value={{
-            cart: cart,
-            addItem: addItem,
-            removeItem: removeItem,
-            clear: clear,
-            isInCart: isInCart
-        }}>
+        <CartContext.Provider value={{items, addItem, removeItem, clear, isInCart}}>
             {children}
         </CartContext.Provider>
     )

@@ -23,7 +23,7 @@ const ItemDetail = ({ item }) => {
     const cart = useContext(CartContext);
     const finishPurchase = () => {
         console.log("Finish purchase");
-        cart.addItem(item.id, count);
+        cart.addItem(item, count);
     }
 
     return (
