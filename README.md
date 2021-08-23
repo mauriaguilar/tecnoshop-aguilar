@@ -40,6 +40,9 @@ npm start
 ## Structure of code
 
 * App
+  * NavBar
+    * CartWidget
+    * Button
   * Paths: **/** and **/category/:id**
     * ItemListContainer
       * ItemList
@@ -50,6 +53,6 @@ npm start
       * ItemDetail
         * ItemCount
   * Path: **/cart**
-    * empty-component
+    * Cart
   * Path: **/\***
     * NotFound
