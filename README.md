@@ -47,7 +47,7 @@ npm start
     * ItemListContainer
       * ItemList
         * Item
-        * ItemCount
+        <!-- * ItemCount -->
   * Path: **/item/:id**
     * ItemDetailContainer
       * ItemDetail
