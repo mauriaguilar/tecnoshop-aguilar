@@ -25,7 +25,7 @@ const ItemDetailContainer = ({ category }) => {
 
 
     return (
-        <div className="row m-5 border border-dark">
+        <div className="row m-5">
 
             <div id="itemListContainer" className="col fs-3 ">
                 Item Detail of<span className="greeting"> {itemDetail.title} </span>

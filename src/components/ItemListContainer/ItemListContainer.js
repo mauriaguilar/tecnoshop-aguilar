@@ -26,7 +26,7 @@ const ItemListContainer = ({ greeting }) => {
         <div className="row ms-5">
         <h2>{id}</h2>
         </div>
-        <div className="row m-5 border border-dark">
+        <div className="row m-5 mt-0">
             <div id="itemListContainer" className="col fs-3 ">
                 Hi <span className="greeting">{ greeting }</span>,
                 these are our innovative products!
