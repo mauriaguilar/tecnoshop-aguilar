@@ -14,17 +14,17 @@ export default function CartProvider({ children }) {
     const addItem = (item, quantity) => {
         console.log("Adding " + quantity + " items of " + item.id + ".");
         if (isInCart(item.id)) {
-            let new_items = removeItem(item.id);
-            setItems([...new_items, {item, quantity}]);
+            let curr_item = items.find(elem => elem.item.id === item.id);
+            curr_item.quantity += quantity;
         } else {
             setItems([...items, {item, quantity}]);
         }
 
         // Testing functions
-        // removeItem(item_id);
-        // clear();
-        // isInCart(item_id);
+        // isInCart(item.id);
         // isInCart(0);
+        // removeItem(item.id);
+        // clear();
     }
 
     const removeItem = (item_id) => {
@@ -32,11 +32,11 @@ export default function CartProvider({ children }) {
             return element.item.id !== item_id;
         });
         console.log("Item " + item_id + " was removed.");
-        return new_items;
+        setItems(new_items);
     }
 
     const clear = () => {
-        setItems({});
+        setItems([]);
         console.log("All items removed.");
     }
 
