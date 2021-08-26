@@ -13,24 +13,24 @@ function App() {
     return (
     <div className="App container-fluid">
         <BrowserRouter>
-          <NavBar />
-          <Switch>
-            <CartProvider>
-              <Route exact path="/">
-                <ItemListContainer greeting="Tecno People" />
-              </Route>
-              <Route exact path="/category/:id">
-                <ItemListContainer greeting="Tecno People" />
-              </Route>
-              <Route exact path="/item/:id">
-                <ItemDetailContainer category="Speakers" />
-              </Route>
-              <Route exact path="/cart">
-                <Cart/>
-              </Route>
-            </CartProvider>
-            <Route path="*" component={NotFound} />
-          </Switch>
+          <CartProvider>
+            <NavBar />
+            <Switch>
+                <Route exact path="/">
+                  <ItemListContainer greeting="Tecno People" />
+                </Route>
+                <Route exact path="/category/:id">
+                  <ItemListContainer greeting="Tecno People" />
+                </Route>
+                <Route exact path="/item/:id">
+                  <ItemDetailContainer category="Speakers" />
+                </Route>
+                <Route exact path="/cart">
+                  <Cart/>
+                </Route>
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </CartProvider>
         </BrowserRouter>
     </div>
   );

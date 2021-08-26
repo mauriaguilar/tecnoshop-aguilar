@@ -6,7 +6,6 @@ export const CartContext = React.createContext();
 const defaultValue = [];
 
 
-
 export default function CartProvider({ children }) {
     const [items, setItems] = useState(defaultValue);
 
