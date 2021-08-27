@@ -29,7 +29,7 @@ const ItemDetailContainer = ({ category }) => {
 
             <div id="itemListContainer" className="col fs-3 ">
                 Item Detail of<span className="greeting"> {itemDetail.title} </span>
-                <h6>id: {itemDetail.id}</h6>
+                {/* <h6>id: {itemDetail.id}</h6> */}
                 <div className="card-group">
                     <ItemDetail item={itemDetail}/>
                 </div>

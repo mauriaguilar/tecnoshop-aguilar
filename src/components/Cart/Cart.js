@@ -38,22 +38,33 @@ const Cart = () => {
                     <div className="col-3"></div>
                     <div className="col-6 bg-white justify-content-center">
 
-                        <table className="table">
+                        <table className="table align-middle">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Product</th>
+                                    <th scope="col" colSpan={2}>Product</th>
                                     <th scope="col">Count</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col" className="col-1">Control</th>
+                                    <th scope="col" className="col-1"></th>
                                 </tr>
                             </thead>
                             <tbody>
                             {
                                 cart.items.map((elem, index) => {
                                     return <tr key={elem.item.id}>
-                                        <th scope="row">{index+1}</th>
-                                        <td>{elem.item.title}</td>
+                                        <td><img src={elem.item.pictureUrl} alt="item" className="picture mb-3"/></td>
+                                        <td className="float-left">
+                                            <b>{elem.item.title}</b>
+                                            <br />
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                                                <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                                            </svg>
+                                            {(elem.item.price * elem.quantity > 100)
+                                                ? <>
+                                                    <small className="ms-2 free-shipping">free shipping</small>
+                                                  </>
+                                                : <> <small>shipping cost: $10*</small></>
+                                            }
+                                        </td>
                                         <td>{elem.quantity}</td>
                                         <td>${elem.item.price}</td>
                                         <td className="text-center cursor-pointer">
@@ -71,14 +82,10 @@ const Cart = () => {
                                     <td></td>
                                     <td><b>${totalPrice}</b></td>
                                     <td></td>
-                                    {/* <td>.</td> colSpan={3}>
-                                    */}
                                 </tr>
                             </tbody>
                         </table>
-
-                        Arreglar tema de que al hacer click en un Loading te redirige
-                        Agregar un spin
+                        * free shipping on purchases over $100.
                     </div>
                     <div className="col-3"></div>
                 </div>
