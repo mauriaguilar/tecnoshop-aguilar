@@ -85,7 +85,7 @@ const Cart = () => {
                                 </tr>
                             </tbody>
                         </table>
-                        * free shipping on purchases over $100.
+                        <small>* free shipping on purchases over $100.</small>
                     </div>
                     <div className="col-3"></div>
                 </div>
