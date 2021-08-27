@@ -18,9 +18,6 @@ const AccountScreen = () => {
 
                 <Link to="/" className="row title-link">
                     <div id="title" className="col d-flex justify-content-center">
-                            <span className="d-flex align-items-center">
-                                <CartWidget />
-                            </span>
                             <span>
                                 TecnoShop Aguilar
                             </span>
@@ -38,6 +35,9 @@ const AccountScreen = () => {
                                 return <Button key={cat} text={cat}/>
                             })
                         }
+                        <span className="position-relative float-rigth ms-3">
+                            <CartWidget />
+                        </span>
                     </ul>
                 </div>
 
