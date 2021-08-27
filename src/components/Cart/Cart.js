@@ -20,16 +20,15 @@ const Cart = () => {
     return (
         <div className="text-center">
 
-            {!cart?.items.length &&
+            {(cart?.items.length === 0)
+            ?
                 <div className="text-center">
                     <h3>Your cart is empty</h3>
                     <h4>Thousands of products are waiting for you!</h4>
                     <Link to="/"><button type="button" className="btn btn-primary">Go to catalog</button></Link>
                 </div>
-            }
-
-            {(cart?.items.length > 0) &&
-            <>
+            :
+                <>
                 <div className="row">
                     <h2 className="col">Purchase details:</h2>
                 </div>
@@ -61,7 +60,7 @@ const Cart = () => {
                                             {(elem.item.price * elem.quantity > 100)
                                                 ? <>
                                                     <small className="ms-2 free-shipping">free shipping</small>
-                                                  </>
+                                                </>
                                                 : <> <small>shipping cost: $10*</small></>
                                             }
                                         </td>
@@ -89,7 +88,7 @@ const Cart = () => {
                     </div>
                     <div className="col-3"></div>
                 </div>
-            </>
+                </>
             }
 
             {/* <h5>Cart:</h5> <pre>{JSON.stringify(cart?.items, null, 4)}</pre> */}
