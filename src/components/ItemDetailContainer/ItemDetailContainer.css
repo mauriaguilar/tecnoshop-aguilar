@@ -1,4 +1,5 @@
-#itemListContainer {
+img {
+    min-width: 44rem;
 }
 
 #greeting {

@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = ({ category }) => {
     const [itemDetail, setItemDetail] = useState({
-        id: 0, title: "loading...", description: "loading...",
+        id: 0, title: "...", price: "...",
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     });
     const { id } = useParams();
@@ -27,13 +27,16 @@ const ItemDetailContainer = ({ category }) => {
     return (
         <div className="row m-5">
 
+            <div className="col-1"></div>
+
             <div id="itemListContainer" className="col fs-3 ">
-                Item Detail of<span className="greeting"> {itemDetail.title} </span>
-                {/* <h6>id: {itemDetail.id}</h6> */}
+                Item Detail of<span className="greeting"> {itemDetail.title}</span>
                 <div className="card-group">
                     <ItemDetail item={itemDetail}/>
                 </div>
             </div>
+
+            <div className="col-1"></div>
 
         </div>
     );

@@ -1,4 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
+import './ItemDetail.css';
 import ItemCount from "../ItemCount/ItemCount"
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../contexts/CartContext';
@@ -36,13 +37,28 @@ const ItemDetail = ({ item }) => {
 
                 <div className="col-4">
                     <div className="card-body">
-                        <h5 className="card-title">{item.title}</h5>
-                        <p className="card-text fs-5">{item.description}</p>
-                        <h3>$ {item.price}</h3>
-                        {!isVisible &&
-                            <ItemCount id={item?.id} title={item?.title} stock={item.stock} initial={count} onAdd={onAdd}/>
+
+                        <h5 className="card-title">{item.title !== "..." ? item.title : "Loading..."}</h5>
+                        <p className="card-text fs-5">
+                        {item.description
+                            ?
+                                item.description
+                            :
+                                <>
+                                    <div className="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <br/><br/><br/>
+                                </>
                         }
-                        {isVisible &&
+                        </p>
+
+                        <h3>$ {item.price}</h3>
+
+                        {!isVisible
+                        ?
+                            <ItemCount id={item?.id} title={item?.title} stock={item.stock} initial={count} onAdd={onAdd}/>
+                        :
                             <div>{count} units.<br />
                                 <button className="btn btn-outline-secondary m-0 me-3" type="button" onClick={hideTotal}>
                                     Cancel
