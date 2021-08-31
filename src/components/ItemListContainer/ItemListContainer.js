@@ -3,6 +3,7 @@ import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
 import {getItemsByCategory, getItems} from "../../apiMock";
 import { useParams } from 'react-router-dom';
+import {RequestItems} from "../../firebase"
 
 const ItemListContainer = ({ greeting }) => {
     const [itemList, setItemList] = useState([{
@@ -11,6 +12,10 @@ const ItemListContainer = ({ greeting }) => {
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     }]);
     const { id } = useParams();
+
+    useEffect(() => {
+        
+    })
 
     useEffect(() => {async function fetchData() {
         const all_items = ["*"];
@@ -23,6 +28,7 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
     <>
+        <RequestItems/>
         <div className="row ms-5">
         <h2>{id}</h2>
         </div>

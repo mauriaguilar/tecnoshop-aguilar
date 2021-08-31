@@ -1,5 +1,5 @@
 // data simulation
-const items_data = [
+export const items_data = [
     {
         id: 'd64cb826-416d-4b86-a528-d4fec79555fb',
         title: 'Smartphone ASD-A1',
