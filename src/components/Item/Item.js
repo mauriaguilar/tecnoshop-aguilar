@@ -7,7 +7,7 @@ const Item = ({id, title, description, image}) => {
 
     return (
         <>
-            <Link to={id && `/item/${id}`} className="item-link">
+            <Link to={id ? `/item/${id}` : "#"} className="item-link">
                 <img src={image} className="card-img-top" alt="..." />
 
                 <div className="card-body card-sizing">
