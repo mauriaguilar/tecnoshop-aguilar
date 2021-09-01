@@ -3,6 +3,7 @@ import './ItemDetailContainer.css';
 import ItemDetail from "../ItemDetail/ItemDetail";
 import getItems from "../../apiMock";
 import { useParams } from 'react-router-dom';
+import Firebase from "../../firebase"
 
 const ItemDetailContainer = ({ category }) => {
     const [itemDetail, setItemDetail] = useState({
@@ -11,6 +12,7 @@ const ItemDetailContainer = ({ category }) => {
     });
     const { id } = useParams();
 
+    // 1) Using ApiMock
     useEffect(() => {async function fetchData() {
         console.log("Searching items");
         const id_of_item = id ? id : 'fb231439-9ae0-4d67-bd9b-e8bfa95cc35a';
@@ -18,10 +20,28 @@ const ItemDetailContainer = ({ category }) => {
         console.log(items_id)
         const items = await getItems(items_id);
         console.log(items);
-        setItemDetail(items[0]);
+        // setItemDetail(items[0]);
       }
       fetchData();
     },[id])
+
+    // 2) Using Firebase
+    useEffect(() => {
+        // GET: Getting Catalog
+        console.log("obtiendo catalogo")
+        Firebase.getItems({
+            field: "category",
+            condition: "==",
+            value: id
+        }).then((docs) => {
+            const arr = [];
+            docs.forEach((item) => {
+                arr.push(item.data());
+            });
+            console.log(arr);
+            setItemDetail(arr);
+        })
+    })
 
 
     return (

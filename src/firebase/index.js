@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-// import { items_data } from "../apiMock";
 import { initializeApp } from "firebase/app";
 import {
     getFirestore,
@@ -21,8 +19,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 const db = getFirestore();
 
-
-class Firebase {
+export default class Firebase {
     static getCollection(collName) {
         return collection(db, collName);
     }
@@ -30,6 +27,34 @@ class Firebase {
     static query(collName, options) {
         const ref = this.getCollection(collName);
         return getDocs(query(ref, where(options.field, options.condition, options.value)));
+    }
+
+    static areValidOptions(options) {
+        if (typeof(options) == "object") {
+            if (!options.field || typeof(options.field) !== "string") {
+                console.log("condition option is not valid.");
+                return false;
+            }
+            if (!options.condition || typeof(options.condition) !== "string") {
+                console.log("condition option is not valid.");
+                return false;
+            }
+            if (!options.value) {
+                console.log("value option is not valid.");
+                return false;
+            }
+        } else {
+            console.log("options are valid.");
+            return true;
+        }
+        console.log(options);
+    }
+
+    static getItems(options) {
+        const ref = this.getCollection("items");
+        if (this.areValidOptions(options))
+            return getDocs(query(ref, where(options.field, options.condition, options.value)));
+        return getDocs(query(ref));
     }
 
     static addItem(item) {
@@ -41,7 +66,6 @@ class Firebase {
         console.log("Adding items.")
         if (Array.isArray(items)){
             for (let i=0; i<items.length; i++){
-                console.log(items[i])
                 this.addItem(items[i]).then((data) => {
                     console.log("Items added:");
                     console.log(data)
@@ -52,44 +76,3 @@ class Firebase {
             console.log("Wrong format.");
     }
 }
-
-
-
-export const RequestItems = () => {
-
-    const [items, setItems] = useState({});
-
-    useEffect(() => {
-        console.log("HOOK EJECUTADO: ");
-
-        // GET: Getting Catalog
-        Firebase.query("items", {
-            field: "title",
-            condition: "!=",
-            value: ""
-        }).then((docs) => {
-            const arr = [];
-            docs.forEach((item) => {
-                arr.push(item.data());
-            });
-            setItems(arr);
-        })
-
-        // POST: Add 1 item
-        // Firebase.addItem(item).then((data) => {
-        //     console.log(data)
-        // })
-        // POST: Create Catalog
-        // Firebase.addItems(items_data);
-
-    }, [])
-
-    return (
-        <h1>
-            FIREBASE CARGADO
-            <h5>DB:</h5> <pre style={{"fontSize": "12px"}}>{JSON.stringify(items, null, 4)}</pre>
-        </h1>
-    )
-}
-
-console.log("FIREBASE EJECUTADO");

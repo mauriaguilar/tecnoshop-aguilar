@@ -3,7 +3,7 @@ import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
 import {getItemsByCategory, getItems} from "../../apiMock";
 import { useParams } from 'react-router-dom';
-import {RequestItems} from "../../firebase"
+import Firebase from "../../firebase"
 
 const ItemListContainer = ({ greeting }) => {
     const [itemList, setItemList] = useState([{
@@ -13,22 +13,38 @@ const ItemListContainer = ({ greeting }) => {
     }]);
     const { id } = useParams();
 
+    // 1) Using ApiMock
     useEffect(() => {
-        
-    })
-
-    useEffect(() => {async function fetchData() {
-        const all_items = ["*"];
-        const items = id ? await getItemsByCategory(id) : await getItems(all_items);
-        console.log(items);
-        setItemList(items);
-      }
+        async function fetchData() {
+            const all_items = ["*"];
+            const items = id ? await getItemsByCategory(id) : await getItems(all_items);
+            console.log(items);
+            // setItemList(items);
+        }
       fetchData();
     },[id])
+    console.log("renderizando")
+
+    // 2) Using Firebase
+    useEffect(() => {
+        // GET: Getting Catalog
+        console.log("obtiendo item detail")
+        Firebase.getItems({
+            field: "id",
+            condition: "==",
+            value: id
+        }).then((docs) => {
+            const arr = [];
+            docs.forEach((item) => {
+                arr.push(item.data());
+            });
+            console.log(arr);
+            setItemList(arr);
+        })
+    })
 
     return (
     <>
-        <RequestItems/>
         <div className="row ms-5">
         <h2>{id}</h2>
         </div>
