@@ -10,7 +10,7 @@ const Cart = () => {
 
     useEffect(() => {
         console.log(cart);
-        let subtotal = cart.items.reduce(((n, item) => n+item.price*item.quantity), 0);
+        let subtotal = cart.items.reduce(((n, item) => n+item.item.price*item.quantity), 0);
         setTotalPrice(Math.round(subtotal * 100) / 100);
     }, [cart])
 
