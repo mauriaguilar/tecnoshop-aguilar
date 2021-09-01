@@ -9,11 +9,7 @@ const CartWidget = () => {
 
     useEffect(() => {
         console.log(cart);
-        let budge_num = 0;
-        for (const index in cart.items) {
-            budge_num += cart.items[index].quantity;
-        }
-        setBudgeNum(budge_num);
+        setBudgeNum( cart.items.reduce(((n, item) => n+item.quantity), 0) );
     }, [cart])
 
     return (
