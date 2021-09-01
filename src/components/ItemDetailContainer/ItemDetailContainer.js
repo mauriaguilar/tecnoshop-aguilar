@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import './ItemDetailContainer.css';
 import ItemDetail from "../ItemDetail/ItemDetail";
-import getItems from "../../apiMock";
-import { useParams } from 'react-router-dom';
+// import getItems from "../../apiMock";
 import Firebase from "../../firebase"
 
 const ItemDetailContainer = ({ category }) => {
@@ -11,15 +11,16 @@ const ItemDetailContainer = ({ category }) => {
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     });
     const { id } = useParams();
+    console.log("rendering ItemDetailContainer...");
 
     // 1) Using ApiMock
     useEffect(() => {async function fetchData() {
-        console.log("Searching items");
-        const id_of_item = id ? id : 'fb231439-9ae0-4d67-bd9b-e8bfa95cc35a';
-        const items_id = [id_of_item]
-        console.log(items_id)
-        const items = await getItems(items_id);
-        console.log(items);
+        // console.log("Searching items");
+        // const id_of_item = id ? id : 'fb231439-9ae0-4d67-bd9b-e8bfa95cc35a';
+        // const items_id = [id_of_item]
+        // console.log(items_id)
+        // const items = await getItems(items_id);
+        // console.log(items);
         // setItemDetail(items[0]);
       }
       fetchData();
@@ -28,21 +29,21 @@ const ItemDetailContainer = ({ category }) => {
     // 2) Using Firebase
     useEffect(() => {
         // GET: Getting Catalog
-        console.log("obtiendo catalogo")
+        console.log("getting item detail for id=" + id);
         Firebase.getItems({
-            field: "category",
+            field: "id",
             condition: "==",
             value: id
         }).then((docs) => {
+            console.log("Request to Firebase ok.");
             const arr = [];
             docs.forEach((item) => {
                 arr.push(item.data());
             });
             console.log(arr);
-            setItemDetail(arr);
+            setItemDetail(arr[0]);
         })
-    })
-
+    }, [id])
 
     return (
         <div className="row m-5">

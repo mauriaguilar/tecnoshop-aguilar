@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
-import {getItemsByCategory, getItems} from "../../apiMock";
-import { useParams } from 'react-router-dom';
+// import {getItemsByCategory, getItems} from "../../apiMock";
 import Firebase from "../../firebase"
 
 const ItemListContainer = ({ greeting }) => {
@@ -12,28 +12,29 @@ const ItemListContainer = ({ greeting }) => {
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     }]);
     const { id } = useParams();
+    console.log("rendering ItemListContainer...");
 
     // 1) Using ApiMock
     useEffect(() => {
         async function fetchData() {
-            const all_items = ["*"];
-            const items = id ? await getItemsByCategory(id) : await getItems(all_items);
-            console.log(items);
+            // const all_items = ["*"];
+            // const items = id ? await getItemsByCategory(id) : await getItems(all_items);
+            // console.log(items);
             // setItemList(items);
         }
       fetchData();
     },[id])
-    console.log("renderizando")
 
     // 2) Using Firebase
     useEffect(() => {
         // GET: Getting Catalog
-        console.log("obtiendo item detail")
+        console.log("getting item detail for id=" + id);
         Firebase.getItems({
-            field: "id",
+            field: "category",
             condition: "==",
             value: id
         }).then((docs) => {
+            console.log("Request to Firebase ok.");
             const arr = [];
             docs.forEach((item) => {
                 arr.push(item.data());
@@ -41,7 +42,7 @@ const ItemListContainer = ({ greeting }) => {
             console.log(arr);
             setItemList(arr);
         })
-    })
+    }, [id])
 
     return (
     <>
@@ -50,8 +51,12 @@ const ItemListContainer = ({ greeting }) => {
         </div>
         <div className="row m-5 mt-0">
             <div id="itemListContainer" className="col fs-3 ">
-                Hi <span className="greeting">{ greeting }</span>,
-                these are our innovative products!
+                {!id &&
+                <>
+                    Hi <span className="greeting">{ greeting }</span>,
+                    these are our innovative products!
+                </>
+                }
                 <div className="card-group">
                     <ItemList items={itemList}/>
                 </div>

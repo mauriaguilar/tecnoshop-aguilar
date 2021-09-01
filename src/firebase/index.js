@@ -29,31 +29,37 @@ export default class Firebase {
         return getDocs(query(ref, where(options.field, options.condition, options.value)));
     }
 
-    static areValidOptions(options) {
+    static areOptionsValid(options) {
+        console.log("options: " );
+        console.log(options);
         if (typeof(options) == "object") {
             if (!options.field || typeof(options.field) !== "string") {
-                console.log("condition option is not valid.");
+                console.log("options: condition is not valid.");
                 return false;
             }
-            if (!options.condition || typeof(options.condition) !== "string") {
-                console.log("condition option is not valid.");
+            else if (!options.condition || typeof(options.condition) !== "string") {
+                console.log("options: condition is not valid.");
                 return false;
             }
-            if (!options.value) {
-                console.log("value option is not valid.");
+            else if (!options.value) {
+                console.log("options: value is not valid.");
                 return false;
+            }
+            else {
+                console.log("options: are valid.");
+                return true;
             }
         } else {
-            console.log("options are valid.");
-            return true;
+            console.log("options: not valid.");
+            return false;
         }
-        console.log(options);
     }
 
     static getItems(options) {
         const ref = this.getCollection("items");
-        if (this.areValidOptions(options))
+        if (this.areOptionsValid(options))
             return getDocs(query(ref, where(options.field, options.condition, options.value)));
+        console.log("not valid");
         return getDocs(query(ref));
     }
 
