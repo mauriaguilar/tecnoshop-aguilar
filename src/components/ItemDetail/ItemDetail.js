@@ -39,19 +39,19 @@ const ItemDetail = ({ item }) => {
                     <div className="card-body">
 
                         <h5 className="card-title">{item.title !== "..." ? item.title : "Loading..."}</h5>
-                        <p className="card-text fs-5">
+                        <span className="card-text fs-5">
                         {item.description
                             ?
                                 item.description
                             :
                                 <>
                                     <div className="spinner-border" role="status">
-                                        <span class="visually-hidden">Loading...</span>
+                                        <span className="visually-hidden">Loading...</span>
                                     </div>
                                     <br/><br/><br/>
                                 </>
                         }
-                        </p>
+                        </span>
 
                         <h3>$ {item.price}</h3>
 
