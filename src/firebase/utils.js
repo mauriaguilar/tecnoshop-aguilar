@@ -1,13 +1,19 @@
 export default class FirebaseUtils {
+
+    static validString(string) {
+        return (string && typeof(string) === "string");
+    }
+
     static areOptionsValid(options) {
         console.log("options: " );
         console.log(options);
+
         if (typeof(options) == "object") {
-            if (!options.field || typeof(options.field) !== "string") {
+            if (!this.validString(options.field)) {
                 console.log("options: condition is not valid.");
                 return false;
             }
-            else if (!options.condition || typeof(options.condition) !== "string") {
+            else if (!this.validString(options.condition)) {
                 console.log("options: condition is not valid.");
                 return false;
             }

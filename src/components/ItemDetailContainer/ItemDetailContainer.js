@@ -36,12 +36,9 @@ const ItemDetailContainer = ({ category }) => {
             value: id
         }).then((docs) => {
             console.log("Request to Firebase ok.");
-            const arr = [];
             docs.forEach((item) => {
-                arr.push(item.data());
+                setItemDetail(item.data());
             });
-            console.log(arr);
-            setItemDetail(arr[0]);
         })
     }, [id])
 
