@@ -7,7 +7,7 @@ export const items_data = [
         price: 52.45,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/0/',
+        pictureUrl: '/img/smartphone-1894723_640.jpg',
         category: "Smartphones"
     },
     {
@@ -17,7 +17,7 @@ export const items_data = [
         price: 34.5,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/1/',
+        pictureUrl: '/img/smartphone-iphone-410311_640.jpg',
         category: "Smartphones"
     },
     {
@@ -27,7 +27,7 @@ export const items_data = [
         price: 34.5,
         initial: 1,
         stock: 5,
-        pictureUrl: 'https://lorempixel.com/400/200/technics/2/',
+        pictureUrl: '/img/smartphone-iphone-410324_640.jpg',
         category: "Smartphones"
     },
 
@@ -39,7 +39,7 @@ export const items_data = [
         price: 9.49,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/4/',
+        pictureUrl: '/img/smartwatch-calendar-4835848_640.jpg',
         category: "Smartwatches"
     },
     {
@@ -49,7 +49,7 @@ export const items_data = [
         price: 34.5,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/3/',
+        pictureUrl: '/img/smartwatch-hour-4603921_640.jpg',
         category: "Smartwatches"
     },
     {
@@ -59,7 +59,7 @@ export const items_data = [
         price: 34.5,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/9/',
+        pictureUrl: '/img/smartwatch-iphone-1021292_640.jpg',
         category: "Smartwatches"
     },
 
@@ -71,7 +71,7 @@ export const items_data = [
         price: 34.5,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/7/',
+        pictureUrl: '/img/accesory-focus-4734045_640.jpg',
         category: "Accessories"
     },
     {
@@ -81,7 +81,7 @@ export const items_data = [
         price: 34.5,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/8/',
+        pictureUrl: '/img/accesory-led-2953657_640.jpg',
         category: "Accessories"
     },
     {
@@ -91,7 +91,7 @@ export const items_data = [
         price: 34.5,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/10/',
+        pictureUrl: '/img/accesory-par-64-860621_640.jpg',
         category: "Accessories"
     },
 
@@ -103,7 +103,7 @@ export const items_data = [
         price: 14.09,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/5/',
+        pictureUrl: '/img/speaker-156844_640.png',
         category: "Speakers"
     },
     {
@@ -113,7 +113,7 @@ export const items_data = [
         price: 14.09,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/nightlife/0/',
+        pictureUrl: '/img/speaker-3119037_640.jpg',
         category: "Speakers"
     },
     {
@@ -123,7 +123,7 @@ export const items_data = [
         price: 14.09,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/nightlife/2/',
+        pictureUrl: '/img/speaker-woofer-1626796_640.jpg',
         category: "Speakers"
     },
 
@@ -135,7 +135,7 @@ export const items_data = [
         price: 12.9,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/technics/6/',
+        pictureUrl: '/img/battery-1930833_640.jpg',
         category: "Batteries"
     },
     {
@@ -145,7 +145,7 @@ export const items_data = [
         price: 12.9,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/nightlife/3/',
+        pictureUrl: '/img/battery-4909976_640.jpg',
         category: "Batteries"
     },
     {
@@ -155,7 +155,7 @@ export const items_data = [
         price: 12.9,
         initial: 1,
         stock: 5,
-        pictureUrl: 'http://lorempixel.com/400/200/nightlife/4/',
+        pictureUrl: '/img/battery-pack-1049668_640.jpg',
         category: "Batteries"
     }
 ];

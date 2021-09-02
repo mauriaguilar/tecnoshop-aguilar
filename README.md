@@ -5,6 +5,7 @@
   - [Get the project](#get-the-project)
   - [Start app](#start-app)
   - [Structure of code](#structure-of-code)
+  - [Images / Photos](#images--photos)
 
 This repo contains a simple tecno shop based on ReactJs.
 ## Prerequisites
@@ -56,3 +57,7 @@ npm start
     * Cart
   * Path: **/\***
     * NotFound
+
+## Images / Photos
+All images were downloaded from https://pixabay.com/ and Pixabay licensed. 
+[Credits](./public/img/README.md)
