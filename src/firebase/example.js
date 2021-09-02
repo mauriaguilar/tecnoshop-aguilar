@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-// import { items_data } from "../apiMock";
+import { items_data } from "../apiMock";
 import Firebase from "../../firebase"
 
-// -----------------------------------------------------
 // EXAMPLE CODE:
 export const RequestExamples = () => {
 
     const [items, setItems] = useState({});
 
     useEffect(() => {
+
         // GET: Getting Catalog
         Firebase.query("items", {
             field: "title",

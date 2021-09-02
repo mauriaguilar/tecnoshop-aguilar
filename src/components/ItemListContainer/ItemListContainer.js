@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
-// import {getItemsByCategory, getItems} from "../../apiMock";
 import Firebase from "../../firebase"
+// import {getItemsByCategory, getItems} from "../../apiMock";
 
 const ItemListContainer = ({ greeting }) => {
     const [itemList, setItemList] = useState([{
