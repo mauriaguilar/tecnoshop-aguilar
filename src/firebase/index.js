@@ -21,24 +21,20 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 export default class Firebase {
-    static getCollection(collName) {
-        return collection(db, collName);
-    }
-
     static query(collName, options) {
-        const ref = this.getCollection(collName);
+        const ref = collection(db, collName);
         return getDocs(query(ref, where(options.field, options.condition, options.value)));
     }
 
     static getItems(options) {
-        const ref = this.getCollection("items");
+        const ref = collection(db, "items");
         if (FirebaseUtils.areOptionsValid(options))
             return getDocs(query(ref, where(options.field, options.condition, options.value)));
         return getDocs(query(ref));
     }
 
     static addItem(item) {
-        const ref = this.getCollection("items");
+        const ref = collection(db, "items");
         return addDoc(ref, item);
     }
 
