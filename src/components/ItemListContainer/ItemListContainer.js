@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
+// import {getItemsByCategory, getItems} from "../../apiMock";
+import { items_data } from "../../apiMock";
 import Firebase from "../../firebase"
 // import {getItemsByCategory, getItems} from "../../apiMock";
 
@@ -21,6 +23,8 @@ const ItemListContainer = ({ greeting }) => {
             // const items = id ? await getItemsByCategory(id) : await getItems(all_items);
             // console.log(items);
             // setItemList(items);
+            // POST: Create Catalog
+            // Firebase.addItems(items_data);
         }
       fetchData();
     },[id])
