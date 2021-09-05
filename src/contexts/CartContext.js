@@ -12,7 +12,7 @@ export default function CartProvider({ children }) {
 
     const addItem = (item, quantity) => {
         console.log("Adding " + quantity + " items of " + item.id + ".");
-        if (isInCart(item.id)) {
+        if (item.id !== undefined && isInCart(item.id)) {
             let curr_item = items.find(elem => elem.item.id === item.id);
             curr_item.quantity += quantity;
         } else {

@@ -5,7 +5,6 @@ import ItemList from "../ItemList/ItemList";
 // import {getItemsByCategory, getItems} from "../../apiMock";
 import { items_data } from "../../apiMock";
 import Firebase from "../../firebase"
-// import {getItemsByCategory, getItems} from "../../apiMock";
 
 const ItemListContainer = ({ greeting }) => {
     const [itemList, setItemList] = useState([{
@@ -13,8 +12,16 @@ const ItemListContainer = ({ greeting }) => {
         initial: 0, stock: 0,
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     }]);
-    const { id } = useParams();
     console.log("rendering ItemListContainer...");
+
+    const { id } = useParams();
+
+    const resetItems = () => {
+            // POST: Create Catalog
+            console.log("resetting the stock...");
+            Firebase.resetItems(items_data, itemList);
+            //Firebase.addItems(items_data);
+    };
 
     // 1) Using ApiMock
     useEffect(() => {
@@ -23,8 +30,6 @@ const ItemListContainer = ({ greeting }) => {
             // const items = id ? await getItemsByCategory(id) : await getItems(all_items);
             // console.log(items);
             // setItemList(items);
-            // POST: Create Catalog
-            // Firebase.addItems(items_data);
         }
       fetchData();
     },[id])
@@ -33,7 +38,7 @@ const ItemListContainer = ({ greeting }) => {
     useEffect(() => {
         // GET: Getting Catalog
         console.log("getting item detail for id=" + id);
-        Firebase.getItems({
+        Firebase.getAll("items2", {
             field: "category",
             condition: "==",
             value: id
@@ -42,6 +47,7 @@ const ItemListContainer = ({ greeting }) => {
             const arr = [];
             docs.forEach((item) => {
                 arr.push(item.data());
+                arr[arr.length-1].id = item.id;
             });
             console.log(arr);
             setItemList(arr);
@@ -59,6 +65,7 @@ const ItemListContainer = ({ greeting }) => {
                 <>
                     Hi <span className="greeting">{ greeting }</span>,
                     these are our innovative products!
+                    <button className="btn  col-2" onClick={resetItems}>Reset Stock</button>
                 </>
                 }
                 <div className="card-group">

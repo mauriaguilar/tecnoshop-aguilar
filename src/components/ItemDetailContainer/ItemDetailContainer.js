@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import { CartContext } from '../../contexts/CartContext';
 import { useParams } from 'react-router-dom';
 import './ItemDetailContainer.css';
 import ItemDetail from "../ItemDetail/ItemDetail";
@@ -10,8 +11,10 @@ const ItemDetailContainer = ({ category }) => {
         id: 0, title: "...", price: "...",
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     });
-    const { id } = useParams();
     console.log("rendering ItemDetailContainer...");
+
+    const { id } = useParams();
+    const cart = useContext(CartContext);
 
     // 1) Using ApiMock
     useEffect(() => {async function fetchData() {
@@ -28,19 +31,25 @@ const ItemDetailContainer = ({ category }) => {
 
     // 2) Using Firebase
     useEffect(() => {
-        // GET: Getting Catalog
         console.log("getting item detail for id=" + id);
-        Firebase.getItems({
-            field: "id",
-            condition: "==",
-            value: id
-        }).then((docs) => {
+
+        // GET: Getting Catalog
+        Firebase.get(`items2/${id}`).then((doc) => {
             console.log("Request to Firebase ok.");
-            docs.forEach((item) => {
-                setItemDetail(item.data());
-            });
+            // Setting item id
+            let item_doc = doc.data();
+            item_doc.id = doc.id;
+            // Setting item stock: Avoiding (items in cart > items in stock)
+            let elem = cart.items.find(elem => elem.item.id === item_doc.id);
+            let quantity = (elem === undefined) ? 0 : elem.quantity;
+            item_doc.stock = item_doc.stock - quantity;
+            if (item_doc.stock === 0) {
+                item_doc.initial = 0;
+            }
+            // Setting item detail
+            setItemDetail(item_doc);
         })
-    }, [id])
+    }, [cart.items, id])
 
     return (
         <div className="row m-5">
