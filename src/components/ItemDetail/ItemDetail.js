@@ -54,7 +54,7 @@ const ItemDetail = ({ item }) => {
                         </span>
 
                         <h3>$ {item.price}</h3>
-                        <i>{!item.stock && <h5>Sin stock</h5>}</i>
+                        <i>{(item.id !== 0) && !item.stock && <h5>Sin stock</h5>}</i>
 
                         {!isVisible
                         ?

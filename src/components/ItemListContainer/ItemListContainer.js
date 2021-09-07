@@ -12,7 +12,7 @@ const ItemListContainer = ({ greeting }) => {
         initial: 0, stock: 0,
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     }]);
-    console.log("rendering ItemListContainer...");
+    // console.log("rendering ItemListContainer...");
 
     const { id } = useParams();
 
@@ -49,7 +49,7 @@ const ItemListContainer = ({ greeting }) => {
                 arr.push(item.data());
                 arr[arr.length-1].id = item.id;
             });
-            console.log(arr);
+            // console.log(arr);
             setItemList(arr);
         })
     }, [id])

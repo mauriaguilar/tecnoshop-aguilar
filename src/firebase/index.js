@@ -63,6 +63,7 @@ export default class Firebase {
     }
 
     static add(path, obj) {
+        console.log(obj);
         const pathSegments = path.split('/');
         const ref = this.getCollection(...pathSegments);
         return addDoc(ref, obj);

@@ -11,7 +11,7 @@ const ItemDetailContainer = ({ category }) => {
         id: 0, title: "...", price: "...",
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     });
-    console.log("rendering ItemDetailContainer...");
+    // console.log("rendering ItemDetailContainer...");
 
     const { id } = useParams();
     const cart = useContext(CartContext);

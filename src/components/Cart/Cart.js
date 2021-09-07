@@ -82,6 +82,11 @@ const Cart = () => {
                             </tbody>
                         </table>
                         <small>* free shipping on purchases over $100.</small>
+                        <div>
+                            <Link to="/cart/payment">
+                                <button className="btn btn-dark ps-5 pe-5">Buy!</button>
+                            </Link>
+                        </div>
                     </div>
                     <div className="col-3"></div>
                 </div>

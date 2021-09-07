@@ -8,6 +8,7 @@ const defaultValue = [];
 
 export default function CartProvider({ children }) {
     const [items, setItems] = useState(defaultValue);
+    const [edited, setEdited] = useState(false);
 
 
     const addItem = (item, quantity) => {
@@ -19,11 +20,7 @@ export default function CartProvider({ children }) {
             setItems([...items, {item, quantity}]);
         }
 
-        // Testing functions
-        // isInCart(item.id);
-        // isInCart(0);
-        // removeItem(item.id);
-        // clear();
+        setEdited(true);
     }
 
     const removeItem = (item_id) => {
@@ -32,11 +29,13 @@ export default function CartProvider({ children }) {
         });
         console.log("Item " + item_id + " was removed.");
         setItems(new_items);
+        setEdited(true);
     }
 
     const clear = () => {
         setItems([]);
         console.log("All items removed.");
+        setEdited(true);
     }
 
     const isInCart = (item_id) => {
@@ -45,8 +44,12 @@ export default function CartProvider({ children }) {
         return isInCart;
     }
 
+    const disableEdited = () => {
+        setEdited(false);
+    }
+
     return (
-        <CartContext.Provider value={{items, addItem, removeItem, clear, isInCart}}>
+        <CartContext.Provider value={{items, addItem, removeItem, clear, isInCart, edited, disableEdited}}>
             {children}
         </CartContext.Provider>
     )
