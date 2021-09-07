@@ -1,33 +1,11 @@
-import { initializeApp } from "firebase/app";
 import {
-    getFirestore,
-    getDoc,
-    collection,
-    setDoc,
-    addDoc,
-    getDocs,
-    query,
-    where,
-    doc,
-    runTransaction,
-    writeBatch
+    addDoc, setDoc, getDoc, getDocs,
+    doc, collection,
+    query, where,
+    runTransaction, writeBatch
 } from "firebase/firestore";
 import FirebaseUtils from "./utils";
-
-// Web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "",
-  authDomain: "tecnoshop-aguilar.firebaseapp.com",
-  projectId: "tecnoshop-aguilar",
-  storageBucket: "tecnoshop-aguilar.appspot.com",
-  messagingSenderId: "515053350214",
-  appId: "1:515053350214:web:a5c80c5cbe47d305058947"
-};
-
-// Initialize Firebase
-initializeApp(firebaseConfig);
-const db = getFirestore();
-
+import { db } from "./config"
 export default class Firebase {
 
     static getCollection(...pathSegments) {

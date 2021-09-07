@@ -1,5 +1,5 @@
 // data simulation
-export const items_data = [
+export const itemsData = [
     {
         id: 'd64cb826-416d-4b86-a528-d4fec79555fb',
         title: 'Smartphone ASD-A1',
@@ -171,10 +171,10 @@ const getFromApi = (items_id = []) => {
         setTimeout(() => {
             let items_res = [];
             if (items_id.length === 1 && items_id[0] === "*") {
-                items_res = items_data;
+                items_res = itemsData;
             }
             else {
-                items_res = items_data.map((item_data, index, array) => {
+                items_res = itemsData.map((item_data, index, array) => {
                     if (items_id.find(item_id => item_id === item_data.id)){
                         console.log(item_data)
                         return item_data;
