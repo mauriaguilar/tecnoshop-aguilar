@@ -17,7 +17,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
         else
             console.log("It is not possible to delete an item. Count is 0.");
     }
-        
+
     const addItem = () => {
         console.log("Adding item...");
         if (count < stock)
@@ -38,7 +38,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
             <div className="card-footer">
                 <small className="text-muted">
 
-                    {/* Stock controls component */}
+                    {/* Stock controls */}
                     <div className="input-group mb-3">
                         <button className="btn btn-outline-secondary m-0 noselect" type="button"
                          disabled={count===0} onClick={delItem}>
@@ -54,7 +54,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
                         </button>
                     </div>
 
-                    {/* Add-to-cart button component */}
+                    {/* Add-to-cart button */}
                     <div className="row">
                         <div className="col d-flex justify-content-center">
                                 <button

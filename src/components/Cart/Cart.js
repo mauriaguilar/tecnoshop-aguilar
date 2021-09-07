@@ -19,6 +19,7 @@ const Cart = () => {
 
             {(cart?.items.length === 0)
             ?
+                // Empty Cart Message
                 <div className="text-center">
                     <h3>Your cart is empty</h3>
                     <h4>Thousands of products are waiting for you!</h4>
@@ -26,15 +27,18 @@ const Cart = () => {
                 </div>
             :
                 <>
+                {/* Title */}
                 <div className="row">
                     <h2 className="col">Purchase details:</h2>
                 </div>
 
+                {/* Table of Items */}
                 <div className="row">
                     <div className="col-3"></div>
                     <div className="col-6 bg-white justify-content-center">
 
                         <table className="table align-middle">
+                            {/* Titles of the table */}
                             <thead>
                                 <tr>
                                     <th scope="col" colSpan={2}>Product</th>
@@ -43,9 +47,10 @@ const Cart = () => {
                                     <th scope="col" className="col-1"></th>
                                 </tr>
                             </thead>
+                            {/* Item list */}
                             <tbody>
-                            {
-                                cart.items.map((elem, index) => {
+                                {
+                                 cart.items.map((elem) => {
                                     return <tr key={elem.item.id}>
                                         <td><img src={elem.item.pictureUrl} alt="item" className="picture mb-3"/></td>
                                         <td className="float-left">
@@ -55,10 +60,8 @@ const Cart = () => {
                                                 <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
                                             </svg>
                                             {(elem.item.price * elem.quantity > 100)
-                                                ? <>
-                                                    <small className="ms-2 free-shipping">free shipping</small>
-                                                </>
-                                                : <> <small>shipping cost: $10*</small></>
+                                                ? <small className="ms-2 free-shipping">free shipping</small>
+                                                : <small>shipping cost: $10*</small>
                                             }
                                         </td>
                                         <td>{elem.quantity}</td>
@@ -70,8 +73,9 @@ const Cart = () => {
                                             </svg>
                                         </td>
                                     </tr>
-                                })
-                            }
+                                 })
+                                }
+                                {/* Total Price */}
                                 <tr>
                                     <th scope="row">Total</th>
                                     <td></td>
@@ -82,6 +86,7 @@ const Cart = () => {
                             </tbody>
                         </table>
                         <small>* free shipping on purchases over $100.</small>
+                        {/* Buy button */}
                         <div>
                             <Link to="/cart/payment">
                                 <button className="btn btn-dark ps-5 pe-5">Buy!</button>

@@ -3,7 +3,6 @@ import { CartContext } from '../../contexts/CartContext';
 import { useParams } from 'react-router-dom';
 import './ItemDetailContainer.css';
 import ItemDetail from "../ItemDetail/ItemDetail";
-// import getItems from "../../apiMock";
 import Firebase from "../../firebase"
 
 const ItemDetailContainer = ({ category }) => {
@@ -11,25 +10,11 @@ const ItemDetailContainer = ({ category }) => {
         id: 0, title: "...", price: "...",
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     });
-    // console.log("rendering ItemDetailContainer...");
 
     const { id } = useParams();
     const cart = useContext(CartContext);
 
-    // 1) Using ApiMock
-    useEffect(() => {async function fetchData() {
-        // console.log("Searching items");
-        // const id_of_item = id ? id : 'fb231439-9ae0-4d67-bd9b-e8bfa95cc35a';
-        // const items_id = [id_of_item]
-        // console.log(items_id)
-        // const items = await getItems(items_id);
-        // console.log(items);
-        // setItemDetail(items[0]);
-      }
-      fetchData();
-    },[id])
-
-    // 2) Using Firebase
+    // Using Firebase
     useEffect(() => {
         console.log("getting item detail for id=" + id);
 

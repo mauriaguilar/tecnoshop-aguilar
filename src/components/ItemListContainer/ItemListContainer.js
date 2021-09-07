@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
-// import {getItemsByCategory, getItems} from "../../apiMock";
 import Firebase from "../../firebase"
 
 const ItemListContainer = ({ greeting }) => {
@@ -11,22 +10,10 @@ const ItemListContainer = ({ greeting }) => {
         initial: 0, stock: 0,
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     }]);
-    // console.log("rendering ItemListContainer...");
 
     const { id } = useParams();
 
-    // 1) Using ApiMock
-    useEffect(() => {
-        async function fetchData() {
-            // const all_items = ["*"];
-            // const items = id ? await getItemsByCategory(id) : await getItems(all_items);
-            // console.log(items);
-            // setItemList(items);
-        }
-      fetchData();
-    },[id])
-
-    // 2) Using Firebase
+    // Using Firebase
     useEffect(() => {
         // GET: Getting Catalog
         console.log("getting item detail for id=" + id);
@@ -41,7 +28,6 @@ const ItemListContainer = ({ greeting }) => {
                 arr.push(item.data());
                 arr[arr.length-1].id = item.id;
             });
-            // console.log(arr);
             setItemList(arr);
         })
     }, [id])
