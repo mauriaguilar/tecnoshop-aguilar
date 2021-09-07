@@ -1,14 +1,16 @@
 # TecnoShop Aguilar
 
-- [TecnoShop Aguilar](#tecnoshop-aguilar)
-  - [Prerequisites](#prerequisites)
-  - [Get the project](#get-the-project)
-  - [Start app](#start-app)
-  - [Structure of code](#structure-of-code)
-  - [Images / Photos](#images--photos)
+TecnoShop is a basic technology store based on ReactJs, to display, select and purchase items.
 
-This repo contains a simple tecno shop based on ReactJs.
-## Prerequisites
+- [TecnoShop Aguilar](#tecnoshop-aguilar)
+  - [📋 Prerequisites](#-prerequisites)
+  - [🚀 Get the project](#-get-the-project)
+  - [🔧 Start app](#-start-app)
+    - [Considerations:](#considerations)
+  - [⚙️ Structure of code](#️-structure-of-code)
+  - [🌆 Images & Photos](#-images--photos)
+
+## 📋 Prerequisites
 
 **Node**  
 Install node (Ubuntu):
@@ -22,23 +24,34 @@ npm --version
 ```
 This project was tested with node v14.17.3 and npm 6.14.13.
 
-## Get the project
-
+## 🚀 Get the project
+Download and install the project:
 ```bash
 git clone https://github.com/mauriaguilar/tecnoshop-aguilar
 cd tecnoshop-aguilar
-git checkout Entrega12-Firebase
+git checkout main
 npm install
 ```
-
-## Start app
+Configure the apiKey provided in the file:
+```bash
+src/firebase/config.js
+```
+In the firebaseConfig object, set the apiKey variable:
+```javascript
+apiKey: "<api-key-here>",
+```
+## 🔧 Start app
 
 ```bash
 npm start
 ```
 ![use_example.gif](use_example.gif)
 
-## Structure of code
+### Considerations:
+* Each product has 5 units in stock.
+* It is not possible to add more than 5 units of each product to the cart.
+* When you click on the Buy button, a purchase order is generated. The products are removed from the cart but the stock in the database is maintained so that the application can continue to be used.
+## ⚙️ Structure of code
 
 * App
   * NavBar
@@ -48,16 +61,20 @@ npm start
     * ItemListContainer
       * ItemList
         * Item
-        <!-- * ItemCount -->
   * Path: **/item/:id**
     * ItemDetailContainer
       * ItemDetail
         * ItemCount
   * Path: **/cart**
     * Cart
+  * Path: **/cart/payment**
+    * Payment
   * Path: **/\***
     * NotFound
+  * Others:
+      * CartContext
+      * Firebase
 
-## Images / Photos
-All images were downloaded from https://pixabay.com/ and Pixabay licensed. 
-[Credits](./public/img/README.md)
+## 🌆 Images & Photos
+All images were downloaded from https://pixabay.com/ and Pixabay licensed.
+([Credits](./public/img/README.md))
