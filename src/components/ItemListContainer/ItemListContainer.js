@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import './ItemListContainer.css';
 import ItemList from "../ItemList/ItemList";
 // import {getItemsByCategory, getItems} from "../../apiMock";
-import { items_data } from "../../apiMock";
 import Firebase from "../../firebase"
 
 const ItemListContainer = ({ greeting }) => {
@@ -15,13 +14,6 @@ const ItemListContainer = ({ greeting }) => {
     // console.log("rendering ItemListContainer...");
 
     const { id } = useParams();
-
-    const resetItems = () => {
-            // POST: Create Catalog
-            console.log("resetting the stock...");
-            Firebase.resetItems(items_data, itemList);
-            //Firebase.addItems(items_data);
-    };
 
     // 1) Using ApiMock
     useEffect(() => {
@@ -65,7 +57,6 @@ const ItemListContainer = ({ greeting }) => {
                 <>
                     Hi <span className="greeting">{ greeting }</span>,
                     these are our innovative products!
-                    <button className="btn  col-2" onClick={resetItems}>Reset Stock</button>
                 </>
                 }
                 <div className="card-group">
