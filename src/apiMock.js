@@ -175,7 +175,7 @@ const getFromApi = (items_id = []) => {
             }
             else {
                 items_res = itemsData.map((item_data, index, array) => {
-                    if (items_id.find(item_id => item_id === item_data.id)){
+                    if (items_id.find(item_id => item_id === item_data.id)) {
                         console.log(item_data)
                         return item_data;
                     }

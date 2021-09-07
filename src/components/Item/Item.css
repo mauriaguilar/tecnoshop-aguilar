@@ -14,5 +14,6 @@
 }
 
 .item-link:hover {
-    color: var(--color6);;
+    color: var(--color6);
+    ;
 }

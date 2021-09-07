@@ -93,7 +93,6 @@ const Cart = () => {
                 </>
             }
 
-            {/* <h5>Cart:</h5> <pre>{JSON.stringify(cart?.items, null, 4)}</pre> */}
         </div>
     )
 }

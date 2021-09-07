@@ -17,14 +17,14 @@ export default function CartProvider({ children }) {
             let curr_item = items.find(elem => elem.item.id === item.id);
             curr_item.quantity += quantity;
         } else {
-            setItems([...items, {item, quantity}]);
+            setItems([...items, { item, quantity }]);
         }
 
         setEdited(true);
     }
 
     const removeItem = (item_id) => {
-        let new_items = items.filter(function(element){
+        let new_items = items.filter(function (element) {
             return element.item.id !== item_id;
         });
         console.log("Item " + item_id + " was removed.");
@@ -49,7 +49,7 @@ export default function CartProvider({ children }) {
     }
 
     return (
-        <CartContext.Provider value={{items, addItem, removeItem, clear, isInCart, edited, disableEdited}}>
+        <CartContext.Provider value={{ items, addItem, removeItem, clear, isInCart, edited, disableEdited }}>
             {children}
         </CartContext.Provider>
     )

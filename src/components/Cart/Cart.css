@@ -1,10 +1,12 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
 .picture {
     height: 3rem;
     max-height: 3rem;
 }
+
 .free-shipping {
     color: green;
 }

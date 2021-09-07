@@ -33,7 +33,7 @@ export default class Firebase {
         const pathSegments = path.split('/');
         const ref = this.getDoc(...pathSegments);
         return getDoc(ref);
-      }
+    }
 
     static set(path, obj) {
         const pathSegments = path.split('/');
@@ -61,14 +61,14 @@ export default class Firebase {
     }
 
     static addItems(items) {
-        console.log("Adding items...")
-        if (Array.isArray(items)){
+        console.log("Adding items...");
+        if (Array.isArray(items)) {
             const ref = this.getCollection("items2");
-            for (let i=0; i<items.length; i++){
+            for (let i = 0; i < items.length; i++) {
                 delete items[i]["id"];
                 addDoc(ref, items[i]).then((data) => {
                     console.log("Item added:");
-                    console.log(data)
+                    console.log(data);
                 });
             }
         }
@@ -82,13 +82,13 @@ export default class Firebase {
         console.log(db_items);
         mock_items.forEach((mock_item) => {
             let db_item = db_items.find(elem => elem.title === mock_item.title);
-            if (db_item === undefined){
+            if (db_item === undefined) {
                 console.log("Adding a new item...");
                 this.addItem();
             }
             else {
                 db_item.stock = mock_item.stock;
-                this.set("items2/"+ db_item.id, db_item);
+                this.set("items2/" + db_item.id, db_item);
             }
         });
     }

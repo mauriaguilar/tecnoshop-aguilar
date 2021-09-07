@@ -11,7 +11,6 @@ const CartWidget = () => {
         setBudgeNum(cart.items.reduce(((n, item) => n+item.quantity), 0) );
         cart.disableEdited();
     }, [cart, cart.edited, cart.items])
-    // }, [...cart.items.map(item => item.quantity)])
 
     return (
         <>
