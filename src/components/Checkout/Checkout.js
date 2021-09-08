@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './Checkout.css';
 import { useState, useContext, useEffect } from 'react';
 import { CartContext } from '../../contexts/CartContext';
