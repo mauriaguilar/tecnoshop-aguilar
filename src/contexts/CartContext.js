@@ -8,8 +8,6 @@ const defaultValue = [];
 
 export default function CartProvider({ children }) {
     const [items, setItems] = useState(defaultValue);
-    const [edited, setEdited] = useState(false);
-
 
     const addItem = (item, quantity) => {
         console.log("Adding " + quantity + " items of " + item.id + ".");
@@ -19,8 +17,6 @@ export default function CartProvider({ children }) {
         } else {
             setItems([...items, { item, quantity }]);
         }
-
-        setEdited(true);
     }
 
     const removeItem = (item_id) => {
@@ -29,13 +25,11 @@ export default function CartProvider({ children }) {
         });
         console.log("Item " + item_id + " was removed.");
         setItems(new_items);
-        setEdited(true);
     }
 
     const clear = () => {
         setItems([]);
         console.log("All items removed.");
-        setEdited(true);
     }
 
     const isInCart = (item_id) => {
@@ -43,13 +37,23 @@ export default function CartProvider({ children }) {
         console.log("Is in cart: " + isInCart + ".");
         return isInCart;
     }
+    const getTotalPrice = () => {
+        return Math.round(
+            items.reduce(((n, elem) => {
+                if (elem.item.price*elem.quantity > 100)
+                    return n+elem.item.price*elem.quantity;
+                else
+                    return n+elem.item.price*elem.quantity + 10;
+            }), 0)
+            * 100) / 100;
+    }
 
-    const disableEdited = () => {
-        setEdited(false);
+    const getTotalQuantity = () => {
+        return items.reduce(((n, item) => n+item.quantity), 0)
     }
 
     return (
-        <CartContext.Provider value={{ items, addItem, removeItem, clear, isInCart, edited, disableEdited }}>
+        <CartContext.Provider value={{ items, addItem, removeItem, clear, isInCart, getTotalPrice, getTotalQuantity }}>
             {children}
         </CartContext.Provider>
     )

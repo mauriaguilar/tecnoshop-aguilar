@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import './Cart.css';
@@ -6,13 +6,6 @@ import './Cart.css';
 
 const Cart = () => {
     const cart = useContext(CartContext);
-    const [totalPrice, setTotalPrice] = useState(0);
-
-    useEffect(() => {
-        console.log(cart);
-        let subtotal = cart.items.reduce(((n, item) => n+item.item.price*item.quantity), 0);
-        setTotalPrice(Math.round(subtotal * 100) / 100);
-    }, [cart])
 
     return (
         <div className="text-center">
@@ -80,7 +73,7 @@ const Cart = () => {
                                     <th scope="row">Total</th>
                                     <td></td>
                                     <td></td>
-                                    <td><b>${totalPrice}</b></td>
+                                    <td><b>${cart.getTotalPrice()}</b></td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -88,7 +81,7 @@ const Cart = () => {
                         <small>* free shipping on purchases over $100.</small>
                         {/* Buy button */}
                         <div>
-                            <Link to="/cart/payment">
+                            <Link to="/checkout">
                                 <button className="btn btn-dark ps-5 pe-5">Buy!</button>
                             </Link>
                         </div>

@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NotFound from './pages/error404';
 import CartProvider from './contexts/CartContext'
 import Cart from "./components/Cart/Cart"
-import Payment from './components/Payment/Payment';
+import Checkout from './components/Checkout/Checkout';
 
 function App() {
 
@@ -29,8 +29,8 @@ function App() {
                 <Route exact path="/cart">
                   <Cart/>
                 </Route>
-                <Route exact path="/cart/payment">
-                  <Payment/>
+                <Route exact path="/checkout">
+                  <Checkout/>
                 </Route>
               <Route path="*" component={NotFound} />
             </Switch>

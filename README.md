@@ -67,8 +67,8 @@ npm start
         * ItemCount
   * Path: **/cart**
     * Cart
-  * Path: **/cart/payment**
-    * Payment
+  * Path: **/checkout**
+    * Checkout
   * Path: **/\***
     * NotFound
   * Others:
