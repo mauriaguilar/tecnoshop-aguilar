@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './ItemCount.css';
 
 
 const ItemCount = ({ stock, initial, onAdd, id, title }) => {
 
     const [count, setCount] = useState(initial);
+
+    useEffect(() => {
+            setCount(initial);
+    }, [initial])
 
     const delItem = () => {
         console.log("Deleting item...");
@@ -13,7 +17,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
         else
             console.log("It is not possible to delete an item. Count is 0.");
     }
-        
+
     const addItem = () => {
         console.log("Adding item...");
         if (count < stock)
@@ -23,9 +27,8 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
     }
 
     const addToCart = () => {
-        console.log("Adding item to cart...");
         if (stock > 0)
-            onAdd({"title": title, "count": count});
+            onAdd(count);
         else
             console.log("It is not possible to add an item to cart, because stock is 0.");
     }
@@ -35,18 +38,28 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
             <div className="card-footer">
                 <small className="text-muted">
 
-                    {/* Stock controls component */}
+                    {/* Stock controls */}
                     <div className="input-group mb-3">
-                        <button className="btn btn-outline-secondary m-0" type="button" id="button-addon1" onClick={delItem}>-</button>
-                        <input type="text" className="form-control text-center" placeholder={count} aria-label="amount" aria-describedby="button-addon1" />
-                        <button className="btn btn-outline-secondary m-0" type="button" id="button-addon2" onClick={addItem}>+</button>
+                        <button className="btn btn-outline-secondary m-0 noselect" type="button"
+                         disabled={count===0} onClick={delItem}>
+                            -
+                        </button>
+
+                        <input type="text" className="form-control text-center noselect"
+                          placeholder={count} aria-label="amount"/>
+
+                        <button className="btn btn-outline-secondary m-0 noselect" type="button"
+                          disabled={count===stock} onClick={addItem}>
+                            +
+                        </button>
                     </div>
 
-                    {/* Add-to-cart button component */}
+                    {/* Add-to-cart button */}
                     <div className="row">
                         <div className="col d-flex justify-content-center">
                                 <button
-                                    className="btn btn-outline-secondary m-0"
+                                    className="btn btn-dark m-0"
+                                    disabled={count===0}
                                     type="button"
                                     id="button-addon2"
                                     onClick={addToCart}>

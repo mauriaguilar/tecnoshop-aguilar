@@ -5,6 +5,11 @@ button {
 
 button:hover {
     margin-top: 11px;
+    margin-bottom: 9px;
     font-weight: bold;
     border: solid 1px var(--color6);
+}
+
+.is-active {
+    border-bottom: 4px solid var(--color6);
 }

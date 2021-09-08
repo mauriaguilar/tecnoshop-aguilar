@@ -1,64 +1,54 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import { CartContext } from '../../contexts/CartContext';
+import { useParams } from 'react-router-dom';
 import './ItemDetailContainer.css';
 import ItemDetail from "../ItemDetail/ItemDetail";
-import getItems from "../../apiMock";
-import { useParams } from 'react-router-dom';
+import Firebase from "../../firebase"
 
 const ItemDetailContainer = ({ category }) => {
     const [itemDetail, setItemDetail] = useState({
-        id: 0, title: "loading...", description: "loading...",
+        id: 0, title: "...", price: "...",
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
     });
+
     const { id } = useParams();
+    const cart = useContext(CartContext);
 
-    useEffect(() => {async function fetchData() {
-        console.log("Searching items");
-        const id_of_item = id ? id : 'fb231439-9ae0-4d67-bd9b-e8bfa95cc35a';
-        const items_id = [id_of_item]
-        const items = await getItems(items_id);
-        setItemDetail(items[0]);
-        console.log(items[0]);
-      }
-      fetchData();
-    },[])
+    // Using Firebase
+    useEffect(() => {
+        console.log("getting item detail for id=" + id);
 
-    const [cart, setCart] = useState([]);
-    const onAdd = (item) => {
-        console.log("Adding item to cart.");
-        let this_cart = [...cart];
-
-        for (let i=0; i<this_cart.length; i++){
-            if (this_cart[i].title === item.title) {
-                this_cart[i].count += item.count;
-                setCart(this_cart);
-                console.log(this_cart);
-                return;
+        // GET: Getting Catalog
+        Firebase.get(`items2/${id}`).then((doc) => {
+            console.log("Request to Firebase ok.");
+            // Setting item id
+            let item_doc = doc.data();
+            item_doc.id = doc.id;
+            // Setting item stock: Avoiding (items in cart > items in stock)
+            let elem = cart.items.find(elem => elem.item.id === item_doc.id);
+            let quantity = (elem === undefined) ? 0 : elem.quantity;
+            item_doc.stock = item_doc.stock - quantity;
+            if (item_doc.stock === 0) {
+                item_doc.initial = 0;
             }
-        }
-        if (item.count > 0)
-            this_cart.push(item);
-        setCart(this_cart);
-        console.log(this_cart);
-    }
- 
+            // Setting item detail
+            setItemDetail(item_doc);
+        })
+    }, [cart.items, id])
+
     return (
-        <div className="row m-5 border border-dark">
-            
-            <div id="itemListContainer" className="col fs-3 ">
-                Item Detail of Category <span className="greeting">{ category }</span>
+        <div className="row m-5">
+
+            <div className="col-1"></div>
+
+            <div id="itemListContainer" className="col fs-3">
+                Item Detail of<span className="greeting"> {itemDetail.title}</span>
                 <div className="card-group">
-                    <ItemDetail item={itemDetail} onAdd={onAdd}/>
+                    <ItemDetail item={itemDetail}/>
                 </div>
             </div>
 
-            <div className="w-100">
-                {/* <b>Cart List:</b><br /> {
-                    cart.map(item => (
-                        <div key={item.title}>* {item.title}: {item.count}. </div>
-                        // Total: $ {item.price * item.count}
-                    ))
-                } */}
-            </div>
+            <div className="col-1"></div>
 
         </div>
     );

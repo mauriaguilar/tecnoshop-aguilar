@@ -1,3 +1,19 @@
 .card {
     max-width: 18rem;
 }
+
+.card-sizing {
+    min-height: 12rem;
+    max-height: 12rem;
+    overflow: hidden;
+}
+
+.item-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.item-link:hover {
+    color: var(--color6);
+    ;
+}

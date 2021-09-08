@@ -1,28 +1,79 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
+import './ItemDetail.css';
 import ItemCount from "../ItemCount/ItemCount"
+import { Link } from 'react-router-dom';
+import { CartContext } from '../../contexts/CartContext';
 
-const ItemDetail = ({ item, onAdd }) => {
+const ItemDetail = ({ item }) => {
 
+    const [count, setCount] = useState(0);
     useEffect(() => {
-        console.log(item)
-    },[item])
+        setCount(item.initial);
+    }, [item]);
+
+    const [isVisible, setIsVisible] = useState(false);
+    const onAdd = (quantityToAdd) => {
+        console.log("Adding item to cart...");
+        setCount(quantityToAdd);
+        item.initial = quantityToAdd;
+        setIsVisible(true);
+    }
+    const hideTotal = () => {
+        setIsVisible(false);
+    }
+    const cart = useContext(CartContext);
+    const finishPurchase = () => {
+        console.log("Finish purchase");
+        cart.addItem(item, count);
+    }
 
     return (
         <>
             <div className="row me-3 shadow bg-white ms-1 mb-1">
-            
-                <div className="col-6 ps-0">
-                    <img src={item.pictureUrl} className="card-img-top" alt="..." />
+
+                <div className="col-8 ps-0">
+                    <img src={item.pictureUrl} className="card-img-top h-100" alt="..." />
                 </div>
 
                 <div className="col-4">
                     <div className="card-body">
-                        <h5 className="card-title">{item.title}</h5>
-                        <p className="card-text fs-5">{item.description}</p>
+
+                        <h5 className="card-title">{item.title !== "..." ? item.title : "Loading..."}</h5>
+                        <span className="card-text fs-5">
+                        {item.description
+                            ?
+                                item.description
+                            :
+                                <>
+                                    <div className="spinner-border" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </div>
+                                    <br/><br/><br/>
+                                </>
+                        }
+                        </span>
+
                         <h3>$ {item.price}</h3>
-                        {/* <ItemCount id={item?.id} title={item?.title} stock={5} initial={1} onAdd={onAdd}/> */}
+                        <i>{(item.id !== 0) && !item.stock && <h5>Sin stock</h5>}</i>
+
+                        {!isVisible
+                        ?
+                            <ItemCount id={item?.id} title={item?.title} stock={item.stock} initial={count} onAdd={onAdd}/>
+                        :
+                            <div>{count} units.<br />
+                                <button className="btn btn-outline-secondary m-0 me-3" type="button" onClick={hideTotal}>
+                                    Cancel
+                                </button>
+                                <Link to="/cart">
+                                    <button className="btn btn-dark m-0" type="button" onClick={finishPurchase}>
+                                        Finish my purchase
+                                    </button>
+                                </Link>
+                            </div>
+                        }
                     </div>
                 </div>
+
 
             </div>
         </>
