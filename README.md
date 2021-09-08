@@ -6,7 +6,7 @@ TecnoShop is a basic technology store based on ReactJs, to display, select and p
   - [📋 Prerequisites](#-prerequisites)
   - [🚀 Get the project](#-get-the-project)
   - [🔧 Start app](#-start-app)
-    - [Considerations:](#considerations)
+    - [Considerations](#considerations)
   - [⚙️ Structure of code](#️-structure-of-code)
   - [🌆 Images & Photos](#-images--photos)
 
@@ -47,7 +47,7 @@ npm start
 ```
 ![use_example.gif](use_example.gif)
 
-### Considerations:
+### Considerations
 * Each product has 5 units in stock.
 * It is not possible to add more than 5 units of each product to the cart.
 * When you click on the Buy button, a purchase order is generated. The products are removed from the cart but the stock in the database is maintained so that the application can continue to be used.

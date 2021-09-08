@@ -65,7 +65,7 @@ const ItemDetail = ({ item }) => {
                                     Cancel
                                 </button>
                                 <Link to="/cart">
-                                    <button className="btn btn-outline-secondary m-0" type="button" onClick={finishPurchase}>
+                                    <button className="btn btn-dark m-0" type="button" onClick={finishPurchase}>
                                         Finish my purchase
                                     </button>
                                 </Link>

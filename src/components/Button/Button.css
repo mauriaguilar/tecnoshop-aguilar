@@ -9,3 +9,7 @@ button:hover {
     font-weight: bold;
     border: solid 1px var(--color6);
 }
+
+.is-active {
+    border-bottom: 4px solid var(--color6);
+}

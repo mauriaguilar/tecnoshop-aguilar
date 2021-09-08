@@ -58,7 +58,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
                     <div className="row">
                         <div className="col d-flex justify-content-center">
                                 <button
-                                    className="btn btn-outline-secondary m-0"
+                                    className="btn btn-dark m-0"
                                     disabled={count===0}
                                     type="button"
                                     id="button-addon2"

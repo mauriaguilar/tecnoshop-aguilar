@@ -1,10 +1,11 @@
 :root {
-  --color1: #61e585;
-  --color2: #ede558;
-  --color3: #121708;
-  --color4: #7c7973;
-  --color5: #f3eae8;
-  --color6: #0171C6;
+  --color1: hsl(136, 72%, 64%);
+  --color2: hsl(57, 81%, 64%);
+  --color3: hsl(80, 48%, 6%);
+  --color4:	hsl(40, 4%, 47%);
+  --color5: hsl(11, 31%, 93%);
+  --color6: hsl(206, 99%, 39%);
+  --color7: hsl(206, 81%, 61%);
 }
 
 body {
