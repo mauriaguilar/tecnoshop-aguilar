@@ -8,6 +8,7 @@ TecnoShop is a basic technology store based on ReactJs, to display, select and p
   - [🔧 Start app](#-start-app)
     - [Considerations](#considerations)
   - [⚙️ Structure of code](#️-structure-of-code)
+    - [Dependencies](#dependencies)
   - [🌆 Images & Photos](#-images--photos)
 
 ## 📋 Prerequisites
@@ -29,7 +30,7 @@ Download and install the project:
 ```bash
 git clone https://github.com/mauriaguilar/tecnoshop-aguilar
 cd tecnoshop-aguilar
-git checkout main
+git checkout EntregaFinal
 npm install
 ```
 Configure the apiKey provided in the file:
@@ -48,9 +49,9 @@ npm start
 ![use_example.gif](use_example.gif)
 
 ### Considerations
-* Each product has 5 units in stock.
-* It is not possible to add more than 5 units of each product to the cart.
-* When you click on the Buy button, a purchase order is generated. The products are removed from the cart but the stock in the database is maintained so that the application can continue to be used.
+* Each product has 5 units in stock: It is not possible to add more than 5 units of each product to the cart.
+* When you click on the Buy button, a purchase order is generated: The products are removed from the cart but the stock in the database is maintained so that the application can continue to be used.
+* The total price includes the shipping cost for each product: The product price is the number of units times the unit price. If the price of a product is greater than $100, the shipping cost will be $0 for that product.
 ## ⚙️ Structure of code
 
 * App
@@ -74,7 +75,9 @@ npm start
   * Others:
       * CartContext
       * Firebase
-
+### Dependencies
+  * Boostrap 5.0.2 ([docs](https://getbootstrap.com/))
+  * Firebase 9.0.0 ([docs](https://firebase.google.com/))
 ## 🌆 Images & Photos
 All images were downloaded from https://pixabay.com/ and Pixabay licensed.
 ([Credits](./public/img/README.md))
