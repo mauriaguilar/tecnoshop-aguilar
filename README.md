@@ -33,13 +33,16 @@ cd tecnoshop-aguilar
 git checkout main
 npm install
 ```
-Configure the apiKey provided in the file:
+Configure the environment variables provided, in the.env file:
 ```bash
 src/firebase/config.js
 ```
 In the firebaseConfig object, set the apiKey variable:
 ```javascript
-apiKey: "<api-key-here>",
+REACT_APP_FS_API_KEY="<api-key-here>"
+REACT_APP_FS_AUTH="<auth-here>"
+REACT_APP_FS_PROJID="<project-id-here>"
+REACT_APP_FS_APPID="<app-id-here>"
 ```
 ## 🔧 Start app
 
