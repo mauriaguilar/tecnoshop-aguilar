@@ -13,7 +13,7 @@ TecnoShop is a basic technology store based on ReactJs, to display, select and p
 
 ## 📋 Prerequisites
 
-**Node**  
+**Node**
 Install node (Ubuntu):
 ```bash
 sudo snap install node --classic
@@ -30,7 +30,7 @@ Download and install the project:
 ```bash
 git clone https://github.com/mauriaguilar/tecnoshop-aguilar
 cd tecnoshop-aguilar
-git checkout EntregaFinal
+git checkout main
 npm install
 ```
 Configure the apiKey provided in the file:
