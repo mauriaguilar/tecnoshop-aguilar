@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 export const CartContext = React.createContext();
@@ -8,12 +8,19 @@ const defaultValue = [];
 
 export default function CartProvider({ children }) {
     const [items, setItems] = useState(defaultValue);
+    const [totalQuantity, setTotalQuantity] = useState(0);
+
+    useEffect(() => {
+        setTotalQuantity( items.reduce(((n, item) => n+item.quantity), 0) );
+        console.log(items.map(((item) => item.quantity)))
+    }, [items]);
 
     const addItem = (item, quantity) => {
         console.log("Adding " + quantity + " items of " + item.id + ".");
         if (item.id !== undefined && isInCart(item.id)) {
             let curr_item = items.find(elem => elem.item.id === item.id);
             curr_item.quantity += quantity;
+            setTotalQuantity( items.reduce(((n, item) => n+item.quantity), 0) );
         } else {
             setItems([...items, { item, quantity }]);
         }
@@ -48,12 +55,9 @@ export default function CartProvider({ children }) {
             * 100) / 100;
     }
 
-    const getTotalQuantity = () => {
-        return items.reduce(((n, item) => n+item.quantity), 0)
-    }
 
     return (
-        <CartContext.Provider value={{ items, addItem, removeItem, clear, isInCart, getTotalPrice, getTotalQuantity }}>
+        <CartContext.Provider value={{ items, addItem, removeItem, clear, isInCart, getTotalPrice, totalQuantity }}>
             {children}
         </CartContext.Provider>
     )
