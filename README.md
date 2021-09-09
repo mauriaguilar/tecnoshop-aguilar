@@ -35,10 +35,6 @@ git checkout main
 npm install
 ```
 Configure the environment variables provided, in the.env file:
-```bash
-src/firebase/config.js
-```
-In the firebaseConfig object, set the apiKey variable:
 ```javascript
 REACT_APP_FS_API_KEY="<api-key-here>"
 REACT_APP_FS_AUTH="<auth-here>"
