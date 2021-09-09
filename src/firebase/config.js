@@ -3,14 +3,19 @@ import {
     getFirestore
 } from "firebase/firestore";
 
+const { REACT_APP_FS_API_KEY } = process.env;
+const { REACT_APP_FS_AUTH } = process.env;
+const { REACT_APP_FS_PROJID } = process.env;
+const { REACT_APP_FS_APPID } = process.env;
+
 // Web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "",
-    authDomain: "tecnoshop-aguilar.firebaseapp.com",
-    projectId: "tecnoshop-aguilar",
+    apiKey: REACT_APP_FS_API_KEY,
+    authDomain: REACT_APP_FS_AUTH,
+    projectId: REACT_APP_FS_PROJID,
     storageBucket: "tecnoshop-aguilar.appspot.com",
     messagingSenderId: "515053350214",
-    appId: "1:515053350214:web:a5c80c5cbe47d305058947"
+    appId: REACT_APP_FS_APPID
 };
 
 // Initialize Firebase
