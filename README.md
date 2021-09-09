@@ -46,7 +46,7 @@ apiKey: "<api-key-here>",
 ```bash
 npm start
 ```
-![use_example.gif](use_example.gif)
+![example_of_use.gif](example_of_use.gif)
 
 ### Considerations
 * Each product has 5 units in stock: It is not possible to add more than 5 units of each product to the cart.
