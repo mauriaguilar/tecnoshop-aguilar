@@ -36,8 +36,6 @@ const Checkout = () => {
     // Send Order to DB
     useEffect(() => {
         if( order.items.length > 0){
-            console.log("Adding Order to DB:");
-            console.log(order);
             // Send order
             Firebase.add("orders", order).then((result) => {
                 setOrderId(result.id);

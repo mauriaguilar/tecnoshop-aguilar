@@ -11,26 +11,18 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
     }, [initial])
 
     const delItem = () => {
-        console.log("Deleting item...");
         if (count !== 0)
             setCount(count - 1);
-        else
-            console.log("It is not possible to delete an item. Count is 0.");
     }
 
     const addItem = () => {
-        console.log("Adding item...");
         if (count < stock)
             setCount(count + 1);
-        else
-            console.log("It is not possible to add a new item. Stock is " + stock + ".");
     }
 
     const addToCart = () => {
         if (stock > 0)
             onAdd(count);
-        else
-            console.log("It is not possible to add an item to cart, because stock is 0.");
     }
 
     return (

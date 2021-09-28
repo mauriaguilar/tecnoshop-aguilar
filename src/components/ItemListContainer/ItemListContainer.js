@@ -16,13 +16,11 @@ const ItemListContainer = ({ greeting }) => {
     // Using Firebase
     useEffect(() => {
         // GET: Getting Catalog
-        console.log("getting item detail for id=" + id);
         Firebase.getAll("items2", {
             field: "category",
             condition: "==",
             value: id
         }).then((docs) => {
-            console.log("Request to Firebase ok.");
             const arr = [];
             docs.forEach((item) => {
                 arr.push(item.data());

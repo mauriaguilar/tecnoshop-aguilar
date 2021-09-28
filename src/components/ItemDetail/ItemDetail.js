@@ -13,7 +13,6 @@ const ItemDetail = ({ item }) => {
 
     const [isVisible, setIsVisible] = useState(false);
     const onAdd = (quantityToAdd) => {
-        console.log("Adding item to cart...");
         setCount(quantityToAdd);
         item.initial = quantityToAdd;
         setIsVisible(true);
@@ -23,7 +22,6 @@ const ItemDetail = ({ item }) => {
     }
     const cart = useContext(CartContext);
     const finishPurchase = () => {
-        console.log("Finish purchase");
         cart.addItem(item, count);
     }
 

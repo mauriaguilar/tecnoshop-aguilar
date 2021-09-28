@@ -16,11 +16,8 @@ const ItemDetailContainer = ({ category }) => {
 
     // Using Firebase
     useEffect(() => {
-        console.log("getting item detail for id=" + id);
-
         // GET: Getting Catalog
         Firebase.get(`items2/${id}`).then((doc) => {
-            console.log("Request to Firebase ok.");
             // Setting item id
             let item_doc = doc.data();
             item_doc.id = doc.id;
