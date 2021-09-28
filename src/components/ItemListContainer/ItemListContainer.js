@@ -37,12 +37,8 @@ const ItemListContainer = ({ greeting }) => {
         </div>
         <div className="row m-5 mt-0">
             <div id="itemListContainer" className="col fs-3 ">
-                {!id &&
-                <>
                     Hi <span className="greeting">{ greeting }</span>,
                     these are our innovative products!
-                </>
-                }
                 <div className="card-group">
                     <ItemList items={itemList}/>
                 </div>
