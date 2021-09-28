@@ -30,7 +30,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
             <div className="card-footer">
                 <small className="text-muted">
 
-                    {/* Stock controls */}
+                    {/* Buttons to change the stock */}
                     <div className="input-group mb-3">
                         <button className="btn btn-outline-secondary m-0 noselect" type="button"
                          disabled={count===0} onClick={delItem}>
@@ -46,7 +46,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
                         </button>
                     </div>
 
-                    {/* Add-to-cart button */}
+                    {/* Button Add-to-cart */}
                     <div className="row">
                         <div className="col d-flex justify-content-center">
                                 <button
