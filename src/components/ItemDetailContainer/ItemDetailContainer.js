@@ -5,7 +5,7 @@ import './ItemDetailContainer.css';
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Firebase from "../../firebase"
 
-const ItemDetailContainer = ({ category }) => {
+const ItemDetailContainer = () => {
     const [itemDetail, setItemDetail] = useState({
         id: 0, title: "...", price: "...",
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
