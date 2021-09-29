@@ -12,11 +12,9 @@ export default function CartProvider({ children }) {
 
     useEffect(() => {
         setTotalQuantity( items.reduce(((n, item) => n+item.quantity), 0) );
-        console.log(items.map(((item) => item.quantity)))
     }, [items]);
 
     const addItem = (item, quantity) => {
-        console.log("Adding " + quantity + " items of " + item.id + ".");
         if (item.id !== undefined && isInCart(item.id)) {
             let curr_item = items.find(elem => elem.item.id === item.id);
             curr_item.quantity += quantity;
@@ -30,18 +28,15 @@ export default function CartProvider({ children }) {
         let new_items = items.filter(function (element) {
             return element.item.id !== item_id;
         });
-        console.log("Item " + item_id + " was removed.");
         setItems(new_items);
     }
 
     const clear = () => {
         setItems([]);
-        console.log("All items removed.");
     }
 
     const isInCart = (item_id) => {
         let isInCart = (items.find(elem => elem.item.id === item_id) !== undefined) ? true : false;
-        console.log("Is in cart: " + isInCart + ".");
         return isInCart;
     }
     const getTotalPrice = () => {
@@ -57,7 +52,7 @@ export default function CartProvider({ children }) {
 
 
     return (
-        <CartContext.Provider value={{ items, addItem, removeItem, clear, isInCart, getTotalPrice, totalQuantity }}>
+        <CartContext.Provider value={{ items, addItem, removeItem, clear, getTotalPrice, totalQuantity }}>
             {children}
         </CartContext.Provider>
     )

@@ -5,7 +5,7 @@ import './ItemDetailContainer.css';
 import ItemDetail from "../ItemDetail/ItemDetail";
 import Firebase from "../../firebase"
 
-const ItemDetailContainer = ({ category }) => {
+const ItemDetailContainer = () => {
     const [itemDetail, setItemDetail] = useState({
         id: 0, title: "...", price: "...",
         pictureUrl: "https://lorempixel.com/g/400/200/abstract/10/"
@@ -14,13 +14,9 @@ const ItemDetailContainer = ({ category }) => {
     const { id } = useParams();
     const cart = useContext(CartContext);
 
-    // Using Firebase
     useEffect(() => {
-        console.log("getting item detail for id=" + id);
-
-        // GET: Getting Catalog
+        // Get Catalog
         Firebase.get(`items2/${id}`).then((doc) => {
-            console.log("Request to Firebase ok.");
             // Setting item id
             let item_doc = doc.data();
             item_doc.id = doc.id;
@@ -31,7 +27,6 @@ const ItemDetailContainer = ({ category }) => {
             if (item_doc.stock === 0) {
                 item_doc.initial = 0;
             }
-            // Setting item detail
             setItemDetail(item_doc);
         })
     }, [cart.items, id])

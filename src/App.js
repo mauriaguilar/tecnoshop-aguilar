@@ -23,7 +23,7 @@ function App() {
                   <ItemListContainer greeting="Tecno People" />
                 </Route>
                 <Route exact path="/item/:id">
-                  <ItemDetailContainer category="Speakers" />
+                  <ItemDetailContainer />
                 </Route>
                 <Route exact path="/cart">
                   <Cart/>

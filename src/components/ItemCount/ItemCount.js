@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './ItemCount.css';
 
 
-const ItemCount = ({ stock, initial, onAdd, id, title }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
 
     const [count, setCount] = useState(initial);
 
@@ -11,26 +11,18 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
     }, [initial])
 
     const delItem = () => {
-        console.log("Deleting item...");
         if (count !== 0)
             setCount(count - 1);
-        else
-            console.log("It is not possible to delete an item. Count is 0.");
     }
 
     const addItem = () => {
-        console.log("Adding item...");
         if (count < stock)
             setCount(count + 1);
-        else
-            console.log("It is not possible to add a new item. Stock is " + stock + ".");
     }
 
     const addToCart = () => {
         if (stock > 0)
             onAdd(count);
-        else
-            console.log("It is not possible to add an item to cart, because stock is 0.");
     }
 
     return (
@@ -38,7 +30,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
             <div className="card-footer">
                 <small className="text-muted">
 
-                    {/* Stock controls */}
+                    {/* Buttons to change the stock */}
                     <div className="input-group mb-3">
                         <button className="btn btn-outline-secondary m-0 noselect" type="button"
                          disabled={count===0} onClick={delItem}>
@@ -54,7 +46,7 @@ const ItemCount = ({ stock, initial, onAdd, id, title }) => {
                         </button>
                     </div>
 
-                    {/* Add-to-cart button */}
+                    {/* Button Add-to-cart */}
                     <div className="row">
                         <div className="col d-flex justify-content-center">
                                 <button

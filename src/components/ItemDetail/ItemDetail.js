@@ -13,7 +13,6 @@ const ItemDetail = ({ item }) => {
 
     const [isVisible, setIsVisible] = useState(false);
     const onAdd = (quantityToAdd) => {
-        console.log("Adding item to cart...");
         setCount(quantityToAdd);
         item.initial = quantityToAdd;
         setIsVisible(true);
@@ -23,7 +22,6 @@ const ItemDetail = ({ item }) => {
     }
     const cart = useContext(CartContext);
     const finishPurchase = () => {
-        console.log("Finish purchase");
         cart.addItem(item, count);
     }
 
@@ -58,7 +56,7 @@ const ItemDetail = ({ item }) => {
 
                         {!isVisible
                         ?
-                            <ItemCount id={item?.id} title={item?.title} stock={item.stock} initial={count} onAdd={onAdd}/>
+                            <ItemCount stock={item.stock} initial={count} onAdd={onAdd}/>
                         :
                             <div>{count} units.<br />
                                 <button className="btn btn-outline-secondary m-0 me-3" type="button" onClick={hideTotal}>

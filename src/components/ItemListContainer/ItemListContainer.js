@@ -16,13 +16,11 @@ const ItemListContainer = ({ greeting }) => {
     // Using Firebase
     useEffect(() => {
         // GET: Getting Catalog
-        console.log("getting item detail for id=" + id);
         Firebase.getAll("items2", {
             field: "category",
             condition: "==",
             value: id
         }).then((docs) => {
-            console.log("Request to Firebase ok.");
             const arr = [];
             docs.forEach((item) => {
                 arr.push(item.data());
@@ -39,12 +37,8 @@ const ItemListContainer = ({ greeting }) => {
         </div>
         <div className="row m-5 mt-0">
             <div id="itemListContainer" className="col fs-3 ">
-                {!id &&
-                <>
                     Hi <span className="greeting">{ greeting }</span>,
                     these are our innovative products!
-                </>
-                }
                 <div className="card-group">
                     <ItemList items={itemList}/>
                 </div>

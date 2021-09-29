@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import './Cart.css';
@@ -6,6 +6,12 @@ import './Cart.css';
 
 const Cart = () => {
     const cart = useContext(CartContext);
+    const [buyerData, setBuyerData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        address: ""
+    });
 
     return (
         <div className="text-center">
@@ -13,10 +19,14 @@ const Cart = () => {
             {(cart?.items.length === 0)
             ?
                 // Empty Cart Message
-                <div className="text-center">
-                    <h3>Your cart is empty</h3>
-                    <h4>Thousands of products are waiting for you!</h4>
-                    <Link to="/"><button type="button" className="btn btn-primary">Go to catalog</button></Link>
+                <div className="row">
+                    <div className="col-3"></div>
+                    <div className="col text-center">
+                        <h3>Your cart is empty</h3>
+                        <h4>Thousands of products are waiting for you!</h4>
+                        <Link to="/"><button type="button" className="btn btn-primary">Go to catalog</button></Link>
+                    </div>
+                    <div className="col-3"></div>
                 </div>
             :
                 <>
@@ -28,7 +38,7 @@ const Cart = () => {
                 {/* Table of Items */}
                 <div className="row">
                     <div className="col-3"></div>
-                    <div className="col-6 bg-white justify-content-center">
+                    <div className="col-6 bg-white bbg justify-content-center">
 
                         <table className="table align-middle">
                             {/* Titles of the table */}
@@ -79,13 +89,36 @@ const Cart = () => {
                             </tbody>
                         </table>
                         <small>* free shipping on purchases over $100.</small>
-                        {/* Buy button */}
-                        <div>
-                            <Link to="/checkout">
-                                <button className="btn btn-dark ps-5 pe-5">Buy!</button>
-                            </Link>
-                        </div>
                     </div>
+
+                    <div className="col-3"></div>
+                </div>
+                <br/>
+                {/* Buyer data */}
+                <div className="row">
+                    <div className="col-3"></div>
+                    <div className="col bg-white bbg buyer-data">
+                        <b>shipping data:</b><br/>
+                        Name: <input type="text" onChange={(e) => setBuyerData({...buyerData, name: e.target.value})} value={buyerData.name}/><br/>
+                        Email: <input type="text" onChange={(e) => setBuyerData({...buyerData, email: e.target.value})} value={buyerData.email}/><br/>
+                        Phone number: <input type="number" onChange={(e) => setBuyerData({...buyerData, phone: e.target.value})} value={buyerData.phone}/><br/>
+                        Address: <input type="text" onChange={(e) => setBuyerData({...buyerData, address: e.target.value})} value={buyerData.address}/><br/>
+                        <br/>
+                    </div>
+                    <div className="col-3"></div>
+                </div>
+
+                {/* Buy button */}
+                <div className="row">
+                    <div className="col-3"></div>
+                    <Link className="col"
+                        to={{
+                            pathname: (!!buyerData.name && !!buyerData.email && !!buyerData.phone && !!buyerData.address) ? `/checkout` : "#",
+                            state: {buyerData}
+                        }}
+                    >
+                        <button className="btn btn-dark ps-5 pe-5" disabled={!(!!buyerData.name && !!buyerData.email && !!buyerData.phone && !!buyerData.address)}>Buy!</button>
+                    </Link>
                     <div className="col-3"></div>
                 </div>
                 </>
