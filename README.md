@@ -1,7 +1,7 @@
 # TecnoShop Aguilar
 
 TecnoShop is a basic technology store based on ReactJs, to display, select and purchase items.  
-A demo example can be found here: [tecnoshop-aguilar.vercel.app](https://tecnoshop-aguilar.vercel.app/)
+A demo example can be found here: [tecnoshop.vercel.app](https://tecnoshop.vercel.app/)
 
 - [TecnoShop Aguilar](#tecnoshop-aguilar)
   - [📋 Prerequisites](#-prerequisites)
