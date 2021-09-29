@@ -78,6 +78,7 @@ npm start
 ### Dependencies
   * Boostrap 5.0.2 ([docs](https://getbootstrap.com/))
   * Firebase 9.0.0 ([docs](https://firebase.google.com/))
+  * react-router-dom 5.2.0 ([docs](https://reactrouter.com/web/guides/quick-start))
 ## 🌆 Images & Photos
 All images were downloaded from https://pixabay.com/ and Pixabay licensed.
 ([Credits](./public/img/README.md))
