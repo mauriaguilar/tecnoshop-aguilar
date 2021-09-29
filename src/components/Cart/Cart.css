@@ -10,3 +10,8 @@
 .free-shipping {
     color: green;
 }
+
+.buyer-data input, .bbg {
+    border: 0;
+    border-bottom: 1px solid gray;
+}

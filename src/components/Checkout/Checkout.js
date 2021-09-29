@@ -4,21 +4,20 @@ import { useState, useContext, useEffect } from 'react';
 import { CartContext } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import Firebase from '../../firebase';
+import { useLocation } from "react-router-dom";
 
 const Checkout = () => {
     const cart = useContext(CartContext);
     const [orderId, setOrderId] = useState("loading...");
     const [order, setOrder] = useState({buyer: {}, items: []});
+    const location = useLocation();
+    const buyerData = location.state?.buyerData;
 
     // Create order
     useEffect(() => {
         setOrder(
             {
-                buyer: {
-                    name: "Mauricio Aguilar",
-                    phone: "0303456",
-                    email: "mauricio.aguilar-@gmail.com"
-                },
+                buyer: buyerData,
                 items: cart.items.map((elem) => {
                     return {
                         id: elem.item.id,
@@ -80,15 +79,16 @@ const Checkout = () => {
                 <small>{order.buyer.name}</small><br />
                 <small>{order.buyer.phone}</small><br />
                 <small>{order.buyer.email}</small><br />
-                <br />
+                <small>{order.buyer.address}</small><br />
 
+                <br/>
                 <Link to="/">
                     <button className="btn btn-dark">Go back to Catalog</button>
                 </Link>
-
             </div>
             <div className="col-3"></div>
         </div>
+
         </>
     );
 }
